@@ -31,4 +31,4 @@ jobs:
       run: |
         gcloud auth configure-docker us-central1-docker.pkg.dev
         docker build -t us-central1-docker.pkg.dev/glass-potion-394306/gogo-g1/nginx:latest ./setup/server
-        docker push us-central1-docker.pkg.dev/glass-potion-394306/gogo-g1/nginx:latest ./setup/server
+        docker push us-central1-docker.pkg.dev/glass-potion-394306/gogo-g1/nginx:latest
