@@ -18,6 +18,15 @@ jobs:
     - name: code checkout
       uses: actions/checkout@v2 # Needed by default
 
+    - name: Install node_modules
+      run: cd ./setup/client | npm i
+  
+    - name: Run unit tests
+      run: npm test
+
+    - name: Change diretory
+      run: cd ../../
+
     - name: Install gc-cloud-cli
       uses: google-github-actions/setup-gcloud@v0
       with:
@@ -32,13 +41,7 @@ jobs:
         gcloud auth configure-docker us-central1-docker.pkg.dev
         docker build -t us-central1-docker.pkg.dev/glass-potion-394306/gogo-g1/gogo_server:v1.0.0 ./setup/server
         docker push us-central1-docker.pkg.dev/glass-potion-394306/gogo-g1/gogo_server:v1.0.0
-
-    - name: Install node_modules for client
-      run: cd ./setup/client | npm i
-  
-    - name: Run client unit tests
-      run: cd ./setup/client | npm test
-
+    
     - name: Build and push client image to artifact registry
       env: 
         GOOGLE_PROJECT: ${{secrets.GOOGLE_PROJECT}}
