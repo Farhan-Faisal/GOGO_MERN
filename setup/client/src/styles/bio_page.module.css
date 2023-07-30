@@ -1,0 +1,19 @@
+.ProfilePictureButton{
+    height: 115px;
+    width: 115px;
+
+    margin: auto;
+    margin-left: 10px;
+    border-radius: 57.5px;
+    cursor: pointer;
+    border: none;
+    padding: 0;
+}
+
+.ProfilePicture{
+    height: 115px;
+    width: 115px;
+
+    margin: auto;
+    border-radius: 57.5px;
+}

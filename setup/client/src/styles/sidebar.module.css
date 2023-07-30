@@ -1,0 +1,44 @@
+
+.gogoLogo {
+    height: 70px;
+    width: 110px;
+    margin: 10px;
+    background-color: #df6cff;
+    color: #1e1e1e;
+    border-radius: 10px;
+    border-width: 0;
+    font-size: 45px;
+    font-family: 'Advent Pro', sans-serif;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* sidebar component */
+.sidebar {
+    background-color: #000;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 15%;
+}
+
+/* interactive transparent button, text is purple */
+.transparentButton {
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    background: none;
+    color: #ffffff;
+    border-width: 0;
+    min-width: 80px;
+    width: min-content;
+    transition-duration: 0.4s;
+    white-space: nowrap;
+    border-radius: 5px;
+    padding: 0 10px;
+}
+
+.transparentButton:hover {
+    background-color: #3e3e3e;
+}

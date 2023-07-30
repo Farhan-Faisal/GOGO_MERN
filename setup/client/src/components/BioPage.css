@@ -1,0 +1,69 @@
+.BioPage{
+    margin-left: 300px;
+    margin-top: 50px;
+}
+
+.BioPageTop{
+    min-width: 600px;
+    max-width: 1430px;
+    
+    min-height: 100px;
+    max-height: 140px;
+
+    padding: 10px;
+
+    display:flex;
+    flex-direction: row;
+
+    z-index:1;
+
+    background-color: rgb(0, 0, 0);
+}
+
+.BioPageTopRight{
+    float: left;
+}
+
+.ProfilePicture{
+    background-color: red;
+    height: 115px;
+    width: 115px;
+
+    margin-right: 5px;
+
+}
+
+.DisplayName{
+    color: white;
+
+    text-align: left;
+    
+    padding: 3px;
+    margin: 5px;
+
+    height: 40px;
+    max-width: 200px;
+
+    font-size: 40px;
+    font-weight: bold;
+    font-family: "Advent Pro";
+
+    text-align: left;
+}
+
+.AgeGender{
+    color: white;
+
+    padding: 2px;
+    margin: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    height: 20px;
+    width: 80px;
+
+    font-size: 18px;
+    font-weight: bold;
+    font-family: "Advent Pro";
+
+}

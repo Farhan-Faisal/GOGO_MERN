@@ -1,0 +1,39 @@
+.twoColumnContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.chatRoomWrapContainer {
+    display: inline-block;
+
+    padding: 10px;
+
+    width: 50%;
+    height: 80%;
+}
+
+.messageRow{
+    min-height: 50px;
+    height: fit-content;
+    width: inherit;
+}
+
+.message{
+    width: fit-content;
+    border-radius: 15px;
+    text-align: center;
+
+    color: white; 
+    background-color: #AD03DE;
+
+    clear: both;
+    max-width: 50%;
+    overflow-wrap: break-word;
+
+    padding: 6px; 
+    padding-left: 15px;
+    padding-right: 15px;
+    
+    margin: 2px;
+    margin-right: 5px;
+}

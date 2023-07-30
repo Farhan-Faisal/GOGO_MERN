@@ -1,0 +1,17 @@
+body{
+  background-color: black  !important;
+
+  font-family: "Advent Pro" !important;
+}
+
+.page-title{
+  float: left !important;
+  width: 75% !important;
+}
+
+.page-title h1{
+  margin-left: 650px !important;
+  color: #AD03DE !important;
+  font-weight: bold !important;
+  font-size: 100px !important;
+}

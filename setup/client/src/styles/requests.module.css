@@ -1,0 +1,40 @@
+.request {
+    width: min-content;
+    padding-top: 5px;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    border: 3px solid;
+    background-color: #AD03DE;
+    border-color: #AD03DE;
+}
+
+.accepted {
+    background-color: #17f464;
+    border-color: #17f464;
+}
+
+.rejected {
+    background-color: #FF0000;
+    border-color: #FF0000;
+}
+
+.unorderedList {
+    display: flex;
+    background-color: #3e3e3e;
+    text-align: start;
+    list-style-type: none;
+    flex-direction: column;
+    margin: 10px;
+    padding: 0px;
+}
+
+.popupHeading {
+    text-align: center;
+    color: #FFFFFF;
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 30px;
+    font-weight: 300;
+}
