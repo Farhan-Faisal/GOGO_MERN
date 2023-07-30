@@ -18,12 +18,12 @@ jobs:
     - name: code checkout
       uses: actions/checkout@v2 # Needed by default
 
-    # - name: Install node_modules
-    #   working-directory: ./setup/client
-    #   run: npm i
+    - name: Install node_modules
+      working-directory: setup/client
+      run: npm i
   
     - name: Run unit tests
-      working-directory: ./setup/client
+      working-directory: setup/client
       run: npm test
 
     - name: Install gc-cloud-cli
