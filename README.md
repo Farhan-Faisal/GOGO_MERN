@@ -1,5 +1,5 @@
 # GoGo   
-
+/////
 GoGo is a website that connects individuals who want to explore events and experiences together while providing a platform for businesses to expand their reach.
 
 GoGo was built because many individuals encounter the same problem - the desire to attend certain events but lacking companionship for the experience.   
