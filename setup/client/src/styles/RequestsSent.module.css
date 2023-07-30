@@ -33,15 +33,25 @@
     align-self: center;
 }
 
+.promoterAcceptedInvites {
+    margin-left: auto;
+    text-align: center;
+    align-self: center;
+}
+
 .eventPhoto{
     width: 100px ;
     background-color: #df6cff ;
     height: 100px ;
-    text-align: center;
+    align-self: center;
+    flex-shrink: 0;
 }
 
-.requestButtons button{
-    display:block;
+.requestButtons{
+    display:flex;
+    flex-flow: column;
+    align-self: center;
+    justify-content: center;
 }
 
 .acceptButton {
@@ -59,9 +69,6 @@
     text-decoration: none;
     margin: 10px;
     cursor: pointer;
-    position: absolute;
-    right:    0;
-    bottom:   0;
 }
 .acceptButton:hover {
     background-color: #df6cff;
@@ -82,9 +89,6 @@
     text-decoration: none;
     margin: 10px;
     cursor: pointer;
-    position: absolute;
-    right:    0;
-    top:   0;
 }
 .rejectButton:hover {
     background-color: #df6cff;

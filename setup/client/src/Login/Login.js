@@ -1,4 +1,4 @@
-import {Axios} from "axios";
+import Axios from "axios";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../styles/common_styles.module.css";

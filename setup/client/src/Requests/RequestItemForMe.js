@@ -22,7 +22,6 @@ const RequestItemForMe = ({ event }) => {
   const [requestData, setRequestData] = useState([]);
   const [, forceUpdate] = useReducer((x) => x + 1, 0);
 
-
   async function fetchRequest() {
     try {
       const res = await Axios.get(
@@ -34,7 +33,7 @@ const RequestItemForMe = ({ event }) => {
     }
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     fetchRequest().then((data) => {
       setRequestData(data);
       console.log(requestData);
@@ -100,7 +99,6 @@ const RequestItemForMe = ({ event }) => {
     }
   };
 
-
   function makeFirstLetterCapital(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
@@ -117,9 +115,11 @@ const RequestItemForMe = ({ event }) => {
         <ul className={requestStyles.unorderedList}>
           {requestData.map((req) => (
             <li className={requestSentStyles.requestSentCard}>
-              <div className={requestSentStyles.eventPhoto}>
-                <p>Photo</p>
-              </div>
+              <img
+                src={`http://localhost:5000/uploads/` + req.requester.image}
+                alt="No photo"
+                className={requestSentStyles.eventPhoto}
+              />
               <div className={requestSentStyles.requestSentCardContent}>
                 <h4>
                   <b>{req.requester.username}</b>

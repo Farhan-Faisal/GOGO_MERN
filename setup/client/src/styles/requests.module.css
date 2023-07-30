@@ -38,3 +38,19 @@
     font-size: 30px;
     font-weight: 300;
 }
+
+.popupHeading2 {
+    text-align: left;
+    margin-left:20px;
+    color: #FFFFFF;
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.popupHeading3 {
+    color: #FFFFFF;
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+}

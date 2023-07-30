@@ -4,6 +4,7 @@ import Axios from "axios";
 
 import RequestItemForMe from "./RequestItemForMe";
 import EventItem from "../pages/EventItem";
+import ProfilePicture from "../components/ProfilePicture";
 import Popup from "../CommonItems/Popup";
 
 import styles from "../styles/common_styles.module.css";
@@ -37,18 +38,15 @@ const PromoterRequestsPage = () => {
       });
     };
     async function sendRequest(event) {
-      if (userEmail === loggedUserEmail)
-      {
+      if (userEmail === loggedUserEmail) {
         alert("This is your email!");
         return;
       }
       try {
-        await Axios.post(
-          "http://localhost:5000/promoter-requests/", {
-            requesteeEmail: userEmail,
-            event: event._id,
-          }
-        );
+        await Axios.post("http://localhost:5000/promoter-requests/", {
+          requesteeEmail: userEmail,
+          event: event._id,
+        });
         getRequestData();
         alert("Request sent!");
       } catch (error) {
@@ -84,26 +82,57 @@ const PromoterRequestsPage = () => {
         >
           Send Request
         </button>
+        <div className={requestStyles.popupHeading2}>Promoters: </div>
         <ul className={requestStyles.unorderedList}>
-          {requestData.map((req) => (
-            <li className={requestSentStyles.requestSentCard}>
-              <div className={requestSentStyles.eventPhoto}>
-                <p>Photo</p>
-              </div>
-              <div className={requestSentStyles.requestSentCardContent}>
-                <h4>
-                  <b>{req.requestee.username}</b>
-                </h4>
-                <p>{req.requestee.age}</p>
-                <p>{makeFirstLetterCapital(req.requestee.gender)}</p>
-                <p>{req.requestee.email}</p>
-                {req.requestee.biography && <p>{req.requestee.biography}</p>}
-              </div>
-              <div className={requestSentStyles.requestCardStatus}>
-                {makeFirstLetterCapital(req.status)}
-              </div>
-            </li>
-          ))}
+          {requestData
+            .filter((req) => req.status === "accepted")
+            .map((req) => (
+              <li className={requestSentStyles.requestSentCard}>
+                <img
+                  src={`http://localhost:5000/uploads/` + req.requestee.image}
+                  alt="No photo"
+                  className={requestSentStyles.eventPhoto}
+                />
+                <div className={requestSentStyles.requestSentCardContent}>
+                  <h4>
+                    <b>{req.requestee.username}</b>
+                  </h4>
+                  <p>{req.requestee.age}</p>
+                  <p>{makeFirstLetterCapital(req.requestee.gender)}</p>
+                  <p>{req.requestee.email}</p>
+                </div>
+                <div className={requestSentStyles.promoterAcceptedInvites}>
+                  <text>Number of accepted invites:</text>
+                  <p>1</p>
+                </div>
+              </li>
+            ))}
+        </ul>
+        <div className={requestStyles.popupHeading2}>Pending Requests: </div>
+        <ul className={requestStyles.unorderedList}>
+          {requestData
+            .filter((req) => req.status === "pending")
+            .map((req) => (
+              <li className={requestSentStyles.requestSentCard}>
+                <img
+                  src={`http://localhost:5000/uploads/` + req.requestee.image}
+                  alt="No photo"
+                  className={requestSentStyles.eventPhoto}
+                />
+                <div className={requestSentStyles.requestSentCardContent}>
+                  <h4>
+                    <b>{req.requestee.username}</b>
+                  </h4>
+                  <p>{req.requestee.age}</p>
+                  <p>{makeFirstLetterCapital(req.requestee.gender)}</p>
+                  <p>{req.requestee.email}</p>
+                  {req.requestee.biography && <p>{req.requestee.biography}</p>}
+                </div>
+                <div className={requestSentStyles.requestCardStatus}>
+                  {makeFirstLetterCapital(req.status)}
+                </div>
+              </li>
+            ))}
         </ul>
       </>
     );
