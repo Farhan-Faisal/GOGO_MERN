@@ -1,0 +1,25 @@
+services:
+  client:
+    image: faisalf4/setup-client:v1.0.0
+    ports:
+      - 3000:3000
+    networks:
+      - gogo-network
+
+  server:
+    image: faisalf4/setup-server:v1.0.0
+    ports: 
+      - 5000:5000
+    networks:
+      - gogo-network
+networks:
+  gogo-network:
+
+  # docker build -t faisalf4/setup-client:v1.0.0 .
+  # docker build -t faisalf4/setup-server:v1.0.0 .
+
+  # docker run --rm --name client --publish 3000:3000 faisalf4/setup-client:v1.0.0
+  # docker run --rm --name server --publish 3000:3000 faisalf4/setup-server:v1.0.0
+
+  # docker push faisalf4/setup-server:v1.0.0
+  # docker push faisalf4/setup-client:v1.0.0
