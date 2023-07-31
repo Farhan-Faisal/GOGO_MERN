@@ -64,9 +64,6 @@ jobs:
     - name: Push client image to DockerHub
       run: docker push faisalf4/setup-client:v1.0.0
 
-    - name: Push server image to DockerHub Registry
-      run: docker push faisalf4/setup-client:v1.0.0
-
     - name: Deploy to Elastic Beanstalk
       uses: einaregilsson/beanstalk-deploy@v21 ## Predefined github ation
       with:
