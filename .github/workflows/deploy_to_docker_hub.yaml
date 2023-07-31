@@ -8,11 +8,11 @@ on:
   workflow_dispatch: # From TUT
 
 # Set environment variables
-  env:
-    MONGODB_URI: ${{ secrets.MONGODB_URI }}
-    TOKEN_KEY: ${{ secrets.TOKEN_KEY }}
-    EMAIL: ${{ secrets.EMAIL }}
-    PASSWORD: ${{ secrets.PASSWORD }}
+env:
+  MONGODB_URI: ${{ secrets.MONGODB_URI }}
+  TOKEN_KEY: ${{ secrets.TOKEN_KEY }}
+  EMAIL: ${{ secrets.EMAIL }}
+  PASSWORD: ${{ secrets.PASSWORD }}
 
 jobs:
   build-server:
