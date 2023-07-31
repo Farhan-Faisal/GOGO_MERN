@@ -1,0 +1,63 @@
+name: GOGO DOCKER HUB
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch: # From TUT
+
+jobs:
+  build-server:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    defaults:
+      run:
+        working-directory: setup/server
+    
+    steps:
+    - uses: actions/checkout@v2 # Needed by default
+
+    - name: Build server image
+      run: docker build . --file Dockerfile --tag faisalf4/setup-server:v1.0.0
+      
+    - name: Log into DockerHub Registry
+      run: echo "${{secrets.DOCKER_PASSWORD }}" | docker login -u faisalf4 --password-stdin 
+
+    - name: Push server image to DockerHub Registry
+      run: docker push faisalf4/setup-server:v1.0.0
+
+  build-client:
+
+    runs-on: ubuntu-latest
+
+    # strategy:
+    #   matrix:
+    #     node-version: [18.x]
+
+    defaults:
+      run:
+        working-directory: setup/client
+    
+    steps:
+    - uses: actions/checkout@v2 # Needed by default
+    
+    - name: Install node_modules
+      run: npm i
+      
+    - name: Run unit tests
+      run: npm test
+
+    - name: Build client image
+      run: docker build . --file Dockerfile --tag faisalf4/setup-client:v1.0.0
+
+    - name: Log into DockerHub Registry
+      run: echo "${{secrets.DOCKER_PASSWORD }}" | docker login -u faisalf4 --password-stdin 
+
+    - name: Push server image to DockerHub Registry
+      run: docker push faisalf4/setup-client:v1.0.0
