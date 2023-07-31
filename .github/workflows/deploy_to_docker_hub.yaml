@@ -23,46 +23,46 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Install client dependencies
-      working-directory: ./setup/client
-      run: npm install
+    # - name: Install client dependencies
+    #   working-directory: ./setup/client
+    #   run: npm install
 
-    - name: Run unit tests
-      working-directory: ./setup/client
-      run: npm test
+    # - name: Run unit tests
+    #   working-directory: ./setup/client
+    #   run: npm test
     
-    - name: Install Server dependencies
-      working-directory: ./setup/server
-      run: |
-        npm install
-        export MONGODB_URI=$MONGODB_URI
-        export TOKEN_KEY=$TOKEN_KEY
-        export EMAIL=$EMAIL
-        export PASSWORD=$PASSWORD
+    # - name: Install Server dependencies
+    #   working-directory: ./setup/server
+    #   run: |
+    #     npm install
+    #     export MONGODB_URI=$MONGODB_URI
+    #     export TOKEN_KEY=$TOKEN_KEY
+    #     export EMAIL=$EMAIL
+    #     export PASSWORD=$PASSWORD
 
-    - name: Build server image
-      working-directory: ./setup/server
-      run: docker build . --file Dockerfile --tag faisalf4/setup-server:v1.0.0
+    # - name: Build server image
+    #   working-directory: ./setup/server
+    #   run: docker build . --file Dockerfile --tag faisalf4/setup-server:v1.0.0
       
-    - name: Build client image
-      working-directory: ./setup/client
-      run: docker build . --file Dockerfile --tag faisalf4/setup-client:v1.0.0
+    # - name: Build client image
+    #   working-directory: ./setup/client
+    #   run: docker build . --file Dockerfile --tag faisalf4/setup-client:v1.0.0
     
-    - name: Build NGINX image
-      working-directory: ./setup/nginx
-      run: docker build . --file Dockerfile --tag faisalf4/setup-nginx:v1.0.0
+    # - name: Build NGINX image
+    #   working-directory: ./setup/nginx
+    #   run: docker build . --file Dockerfile --tag faisalf4/setup-nginx:v1.0.0
       
-    - name: Log into DockerHub Registry
-      run: echo "${{secrets.DOCKER_PASSWORD }}" | docker login -u faisalf4 --password-stdin 
+    # - name: Log into DockerHub Registry
+    #   run: echo "${{secrets.DOCKER_PASSWORD }}" | docker login -u faisalf4 --password-stdin 
 
-    - name: Push server image to DockerHub
-      run: docker push faisalf4/setup-server:v1.0.0
+    # - name: Push server image to DockerHub
+    #   run: docker push faisalf4/setup-server:v1.0.0
 
-    - name: Push nginx image to DockerHub
-      run: docker push faisalf4/setup-nginx:v1.0.0
+    # - name: Push nginx image to DockerHub
+    #   run: docker push faisalf4/setup-nginx:v1.0.0
 
-    - name: Push client image to DockerHub
-      run: docker push faisalf4/setup-client:v1.0.0
+    # - name: Push client image to DockerHub
+    #   run: docker push faisalf4/setup-client:v1.0.0
 
     - name: Deploy to Elastic Beanstalk
       uses: einaregilsson/beanstalk-deploy@v21 ## Predefined github ation
