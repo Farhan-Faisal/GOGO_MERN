@@ -131,6 +131,13 @@ app.use("/promoter-invites", promoterInviteRouter);
 app.use("/api", chatRouter);
 app.use("/", facebookRouter);
 
+/*
+    - Server deployment indication
+*/
+app.get("/", (req, res) => {
+	res.json({ message: "GoGo server running on port 5000"});
+});
+
 /* Listen on port 5000 */
 httpServer.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
