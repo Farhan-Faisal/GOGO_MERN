@@ -6,7 +6,7 @@ import RequestItemForMe from "./RequestItemForMe";
 import EventItem from "../pages/EventItem";
 import ProfilePicture from "../components/ProfilePicture";
 import Popup from "../CommonItems/Popup";
-
+import configData from "../config.json";
 import styles from "../styles/common_styles.module.css";
 import requestSentStyles from "../styles/RequestsSent.module.css";
 import eventStyles from "../styles/event.module.css";
@@ -19,7 +19,7 @@ const PromoterRequestsPage = () => {
   const [userEmail, setUserEmail] = useState("");
 
   useEffect(() => {
-    Axios.get("http://localhost:5000/api/myevent/" + token.id)
+    Axios.get(configData.SERVER_URL + "/api/myevent/" + token.id)
       .then((res) => {
         setMyEvents(res.data);
       })
@@ -31,7 +31,7 @@ const PromoterRequestsPage = () => {
 
     const getRequestData = () => {
       Axios.get(
-        "http://localhost:5000/promoter-requests/event/" + event._id
+        configData.SERVER_URL + "/promoter-requests/event/" + event._id
       ).then((response) => {
         setRequestData(response.data);
         console.log(response.data);
@@ -43,7 +43,7 @@ const PromoterRequestsPage = () => {
         return;
       }
       try {
-        await Axios.post("http://localhost:5000/promoter-requests/", {
+        await Axios.post(configData.SERVER_URL + "/promoter-requests/", {
           requesteeEmail: userEmail,
           event: event._id,
         });
@@ -56,7 +56,7 @@ const PromoterRequestsPage = () => {
 
     useEffect(() => {
       Axios.get(
-        "http://localhost:5000/promoter-requests/event/" + event._id
+        configData.SERVER_URL + "/promoter-requests/event/" + event._id
       ).then((response) => {
         setRequestData(response.data);
         console.log(response.data);

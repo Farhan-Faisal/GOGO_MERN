@@ -1,7 +1,7 @@
 import styles from "../styles/common_styles.module.css";
 import ceStyles from "./CreateEvents.module.css";
 import StatelessPopup from "../CommonItems/StatelessPopup";
-
+import configData from "../config.json";
 const EventTagsPopup = ({ popupTrigger, setPopupTrigger, selectedTags, setSelectedTags, saveTags}) => {
 
     // https://docs.developer.yelp.com/docs/resources-event-categories

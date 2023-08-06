@@ -3,6 +3,8 @@ import { v4 as uuidv4 } from "uuid";
 import Axios from "axios";
 import "./CreateEvents.css";
 
+import configData from "../config.json";
+
 import styles from "../styles/common_styles.module.css";
 import ceStyles from "./CreateEvents.module.css";
 import jwt_decode from "jwt-decode";
@@ -38,7 +40,7 @@ function CreateEvents() {
 
   // useEffect(() => {
   //     console.log(decoded);
-  //     Axios.get("http://localhost:5000/api/eventlink/" + decoded.userDetail.email)
+  //     Axios.get(configData.SERVER_URL + "/api/eventlink/" + decoded.userDetail.email)
   //         .then((response) => {
   //         if (response.length === 0) {
   //             setCreatedUserEvents([]);
@@ -57,11 +59,11 @@ function CreateEvents() {
 
   // async function updateEvents() {
   //     console.log(createdUserEvents);
-  //     await Axios.delete("http://localhost:5000/api/eventLink/" + decoded.userDetail.email).then(
+  //     await Axios.delete(configData.SERVER_URL + "/api/eventLink/" + decoded.userDetail.email).then(
   //         (response) => {
   //         console.log("Event link document deleted!");
   //     });
-  //     await Axios.post("http://localhost:5000/api/eventLink", {
+  //     await Axios.post(configData.SERVER_URL + "/api/eventLink", {
   //         email: decoded.userDetail.email,
   //         eventList: createdUserEvents,
   //     }).then(response => {
@@ -93,7 +95,7 @@ function CreateEvents() {
     formData.append("tags", JSON.stringify(selectedTags));
 
     // post the event
-    await Axios.post("http://localhost:5000/api/userevents", formData)
+    await Axios.post(configData.SERVER_URL + "/api/userevents", formData)
       .then(() => {
         alert("Event Created!");
       })

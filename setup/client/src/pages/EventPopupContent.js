@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import styles from "../styles/common_styles.module.css";
 import eventStyles from "../styles/event.module.css";
 
+import configData from "../config.json";
+
 import Dropzone from "react-dropzone";
 
 import { EventTags, EventTagsPopup } from "./EventsTags";
@@ -209,7 +211,7 @@ const EventPopupContent = ({ userid, event, index, setEvent, close }) => {
     console.log(editPic);
 
     axios
-      .post("http://localhost:5000/api/edit-content/" + event._id, {
+      .post(configData.SERVER_URL + "/api/edit-content/" + event._id, {
         title,
         date,
         location,
@@ -227,7 +229,7 @@ const EventPopupContent = ({ userid, event, index, setEvent, close }) => {
       const formData = new FormData();
       formData.append("eventPic", editPic);
       axios
-        .post("http://localhost:5000/api/image/" + event._id, formData)
+        .post(configData.SERVER_URL + "/api/image/" + event._id, formData)
         .then(res => {
           setEvent(res.data, index);
         });
@@ -240,7 +242,7 @@ const EventPopupContent = ({ userid, event, index, setEvent, close }) => {
   const [processedMessage, setProcessedMessage] = useState("");
 
   const makeRequest = () => {
-    axios.post("http://localhost:5000/requests/", {
+    axios.post(configData.SERVER_URL + "/requests/", {
       requester: userid,
       event: event._id,
     }).then(res => {
@@ -249,7 +251,7 @@ const EventPopupContent = ({ userid, event, index, setEvent, close }) => {
 
       // Update numRequests for specific event in db only if the request does not already exist
       if (!res.data.exists){
-        axios.post("http://localhost:5000/api/userevents/numRequests", {
+        axios.post(configData.SERVER_URL + "/api/userevents/numRequests", {
         _id: event._id,
         numRequests: event.numRequests + 1,
         }).then((response) => {

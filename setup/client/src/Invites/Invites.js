@@ -3,7 +3,7 @@ import styles from "../styles/common_styles.module.css";
 import { useState } from "react";
 import InvitesForMe from "./InvitesForMe.js";
 import InvitesByMe from "./InvitesByMe.js";
-
+import configData from "../config.json";
 const Invites = () => {
     const [invitesToggle, setInviteToggle] = useState(false);
 

@@ -8,13 +8,15 @@ import Popup from "../CommonItems/Popup";
 import jwt_decode from "jwt-decode";
 import EventItem from "../pages/EventItem";
 
+import configData from "../config.json";
+
 import Axios from "axios";
 
 const InviteItemForMe = ({ _id, invitee, promoter, event, status, setInvite }) => {
   //TODO: DELETE REQUEST to delete the request
   //   const deleteRequest = () => {
   //     axios
-  //       .delete("http://localhost:5000/requests/delete/" + _id)
+  //       .delete(configData.SERVER_URL + "/requests/delete/" + _id)
   //       .then((res) => {
   //         setRequests((prev) => prev.filter((r) => r._id !== _id));
   //       })
@@ -26,7 +28,7 @@ const InviteItemForMe = ({ _id, invitee, promoter, event, status, setInvite }) =
     try {
       console.log(reqId);
 
-      Axios.patch("http://localhost:5000/promoter-invites/reject/" + reqId);
+      Axios.patch(configData.SERVER_URL + "/promoter-invites/reject/" + reqId);
       setInvite(prev => prev.filter(r => r._id !== _id));
 
     } catch (e) {
@@ -49,7 +51,7 @@ const InviteItemForMe = ({ _id, invitee, promoter, event, status, setInvite }) =
         return 0;
       });
 
-      Axios.post("http://localhost:5000/api/chats/", {
+      Axios.post(configData.SERVER_URL + "/api/chats/", {
         participants: [useremail, promoter.email],
         participantsUsernames: [username, promoter.username],
         chatHistory: [],
@@ -60,7 +62,7 @@ const InviteItemForMe = ({ _id, invitee, promoter, event, status, setInvite }) =
         })
         .catch((err) => console.log(err));
 
-      Axios.patch("http://localhost:5000/promoter-invites/accept/" + reqId);
+      Axios.patch(configData.SERVER_URL + "/promoter-invites/accept/" + reqId);
 
       setInvite(prev => prev.filter(r => r._id !== _id));
     } catch (e) {

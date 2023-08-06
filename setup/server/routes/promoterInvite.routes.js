@@ -6,7 +6,7 @@ let UserDetailsModel = require("../models/userDetails.model");
 /* 
     //example usage
 
-    Axios.post("http://localhost:5000/promoter-invites/", {
+    Axios.post(process.env.BASE_URL + "/promoter-invites/", {
         inviteeEmail: invitee_email,
         promoterEmail: promoter_email,
         event: rand_event_id
@@ -72,7 +72,7 @@ router.route("/").post(async (req, res) => {
 /* 
     //example usage (take promoter_id from the session token)
 
-    Axios.get("http://localhost:5000/requests/by/promoter_id", {})
+    Axios.get(process.env.BASE_URL + "/requests/by/promoter_id", {})
     .then(res => {
         // do stuff...
     })
@@ -95,7 +95,7 @@ router.route("/by/:promoter").get((req, res) => {
 /* 
     //example usage
 
-    Axios.post("http://localhost:5000/promoter-invites/delete/invite._id")
+    Axios.post(process.env.BASE_URL + "/promoter-invites/delete/invite._id")
     .then(res => {
         // do stuff...
     })
@@ -111,7 +111,7 @@ router.route("/delete/:_id").delete((req, res) => {
 /* 
     //example usage
 
-    Axios.post("http://localhost:5000/promoter-invites/accept/invite._id")
+    Axios.post(process.env.BASE_URL + "/promoter-invites/accept/invite._id")
     .then(res => {
         // do stuff...
     })
@@ -126,7 +126,7 @@ router.route("/accept/:_id").patch((req, res) => {
 /* 
     //example usage
 
-    Axios.post("http://localhost:5000/promoterInvite/reject/promoterInvite_id")
+    Axios.post(process.env.BASE_URL + "/promoterInvite/reject/promoterInvite_id")
     .then(res => {
         // do stuff...
     })
@@ -141,7 +141,7 @@ router.route("/reject/:_id").patch((req, res) => {
 /* 
     //example usage (take promoter_id from the session token)
 
-    Axios.get("http://localhost:5000/requests/by/:invitee_id", {})
+    Axios.get(process.env.BASE_URL + "/requests/by/:invitee_id", {})
     .then(res => {
         // do stuff...
     })

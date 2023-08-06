@@ -25,7 +25,7 @@ import jwtDecode from "jwt-decode";
 import AccountSetup from "./Signup/AccountSetup";
 import FBAccountSetup from "./Signup/FBAccountSetup"; // DEV-CGP-6
 
-
+import configData from "./config.json";
 
 function App() {
   const [isBusiness, setIsBusiness] = useState(false);

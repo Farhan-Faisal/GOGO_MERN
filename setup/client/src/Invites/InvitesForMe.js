@@ -6,6 +6,8 @@ import Axios from "axios";
 import styles from "../styles/common_styles.module.css";
 import jwtDecode from "jwt-decode";
 
+import configData from "../config.json";
+
 const InvitesForMe = () => {
     const token = jwtDecode(localStorage.getItem("token"));
     console.log(token);
@@ -13,7 +15,7 @@ const InvitesForMe = () => {
     const [invites, setInvites] = useState([]);
 
     useEffect(() => {
-        Axios.get("http://localhost:5000/promoter-invites/to/" + token.id)
+        Axios.get(configData.SERVER_URL + "/promoter-invites/to/" + token.id)
             .then(res => {
                 setInvites(res.data);
                 console.log(res.data);

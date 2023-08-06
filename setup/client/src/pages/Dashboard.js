@@ -6,6 +6,8 @@ import Axios from "axios";
 import styles from "../styles/common_styles.module.css";
 import EventItem from "./EventItem";
 
+import configData from "../config.json";
+
 import jwtDecode from "jwt-decode";
 
 import EventsFilter from "./EventsFilter";
@@ -26,7 +28,7 @@ const Dashboard = () => {
     if (window.location.href.includes('facebook')) {
 
       const userEmail = window.location.href.split('=')[1];
-      Axios.get("http://localhost:5000/login/token/" + userEmail)
+      Axios.get(configData.SERVER_URL + "/login/token/" + userEmail)
         .then((res) => {
           localStorage.setItem("token", res.data.token);
           setToken(jwtDecode(res.data.token))
@@ -51,14 +53,14 @@ const Dashboard = () => {
 
     if (localTags !== null && JSON.parse(localTags).length !== 0) {
       // Gets events according to query tags
-      Axios.post("http://localhost:5000/api/tags/userevents/", {
+      Axios.post(configData.SERVER_URL + "/api/tags/userevents/", {
         queryTags: JSON.parse(localTags),
       }).then(response => {
         setEvents(response.data);
         console.log(response.data);
       });
     } else {
-      Axios.get("http://localhost:5000/api/userevents").then(response => {
+      Axios.get(configData.SERVER_URL + "/api/userevents").then(response => {
         setEvents(response.data);
         console.log(response.data);
       });

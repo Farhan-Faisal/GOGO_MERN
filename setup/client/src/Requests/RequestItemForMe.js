@@ -6,14 +6,14 @@ import eventStyles from "../styles/event.module.css";
 import Popup from "../CommonItems/Popup";
 import jwt_decode from "jwt-decode";
 import EventItem from "../pages/EventItem";
-
+import configData from "../config.json";
 import Axios from "axios";
 
 const RequestItemForMe = ({ event }) => {
   //TODO: DELETE REQUEST to delete the request
   //   const deleteRequest = () => {
   //     axios
-  //       .delete("http://localhost:5000/requests/delete/" + _id)
+  //       .delete(configData.SERVER_URL + "/requests/delete/" + _id)
   //       .then((res) => {
   //         setRequests((prev) => prev.filter((r) => r._id !== _id));
   //       })
@@ -25,7 +25,7 @@ const RequestItemForMe = ({ event }) => {
   async function fetchRequest() {
     try {
       const res = await Axios.get(
-        "http://localhost:5000/requests/pending/" + event._id
+        configData.SERVER_URL + "/requests/pending/" + event._id
       );
       return res.data;
     } catch (e) {
@@ -45,7 +45,7 @@ const RequestItemForMe = ({ event }) => {
       console.log(reqId);
       const reqIndex = requestData.findIndex(({ _id }) => _id === reqId);
 
-      Axios.patch("http://localhost:5000/requests/reject/" + reqId);
+      Axios.patch(configData.SERVER_URL + "/requests/reject/" + reqId);
 
       if (reqIndex !== -1) {
         setRequestData([
@@ -74,7 +74,7 @@ const RequestItemForMe = ({ event }) => {
         return 0;
       });
 
-      Axios.post("http://localhost:5000/api/chats/", {
+      Axios.post(configData.SERVER_URL + "/api/chats/", {
         participants: [useremail, requestData[0].requester.email],
         participantsUsernames: [username, requestData[0].requester.username],
         chatHistory: [],
@@ -85,7 +85,7 @@ const RequestItemForMe = ({ event }) => {
         })
         .catch((err) => console.log(err));
 
-      Axios.patch("http://localhost:5000/requests/accept/" + reqId);
+      Axios.patch(configData.SERVER_URL + "/requests/accept/" + reqId);
 
       if (reqIndex !== -1) {
         alert("Accepted Request from " + requestData[0].requester.username);

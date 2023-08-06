@@ -5,7 +5,7 @@ import RequestItemForMe from "./RequestItemForMe";
 import Axios from "axios";
 
 import styles from "../styles/common_styles.module.css";
-
+import configData from "../config.json";
 const RequestsForMe = () => {
   const token = jwtDecode(localStorage.getItem("token"));
   console.log(token);
@@ -14,7 +14,7 @@ const RequestsForMe = () => {
   const [forMeRequests, setForMeRequests] = useState([]);
 
   // useEffect(() => {
-  //   Axios.get("http://localhost:5000/requests/for/" + token.id)
+  //   Axios.get(configData.SERVER_URL + "/requests/for/" + token.id)
   //     .then((res) => {
   //       console.log(res.data);
   //       setForMeRequests(res.data);
@@ -23,7 +23,7 @@ const RequestsForMe = () => {
   // }, []);
 
   useEffect(() => {
-    Axios.get("http://localhost:5000/api/myevent/" + token.id)
+    Axios.get(configData.SERVER_URL + "/api/myevent/" + token.id)
       .then((res) => {
         setMyEvents(res.data);
       })

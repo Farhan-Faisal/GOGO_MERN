@@ -4,12 +4,12 @@ import styles from "../styles/common_styles.module.css";
 import axios from "axios";
 
 import EventItem from "../pages/EventItem";
-
+import configData from "../config.json";
 const RequestItemByMe = ({ _id, event, status, setRequests }) => {
     //TODO: DELETE REQUEST to delete the request
     const deleteRequest = () => {
         axios
-            .delete("http://localhost:5000/requests/delete/" + _id)
+            .delete(configData.SERVER_URL + "/requests/delete/" + _id)
             .then(res => {
                 setRequests(prev => prev.filter(r => r._id !== _id));
             })

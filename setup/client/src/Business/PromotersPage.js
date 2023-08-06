@@ -1,5 +1,5 @@
 import styles from "../styles/common_styles.module.css";
-
+import configData from "../config.json";
 const PromotersPage = () => {
     return ( <div className={styles.rightContainer}>
         <div className={styles.squishHeading}>

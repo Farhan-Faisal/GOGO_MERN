@@ -3,7 +3,7 @@ import SendIcon from '@mui/icons-material/Send';
 import OutlinedInput from "@mui/material/OutlinedInput";
 import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from "@mui/material/IconButton";
-
+import configData from "../config.json";
 const ChatMessageInput = ({typing, message, sendChatHandler, handleInput, buddyUsername}) => {
     return (
         <Box component="form" onSubmit={sendChatHandler}>

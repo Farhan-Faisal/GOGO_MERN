@@ -3,6 +3,8 @@ import Axios from "axios";
 
 import { useState } from "react";
 
+import configData from "../config.json";
+
 //import "./BioPage.css";
 import UserInterests from "./Interests";
 
@@ -39,17 +41,17 @@ const BioPage = (props) => {
   const displayName = token.userDetail.username;
 
   useEffect(() => {
-    Axios.get("http://localhost:5000/api/userevents/" + userId).then(
+    Axios.get(configData.SERVER_URL + "/api/userevents/" + userId).then(
       (response) => {
         setEvents(response.data);
         console.log(response.data);
       }
     );
-    Axios.get("http://localhost:5000/requests/accepted/" + userId).then((response) => {
+    Axios.get(configData.SERVER_URL + "/requests/accepted/" + userId).then((response) => {
         setAttendingEvents(response.data);
         console.log(response.data);
     });
-    Axios.get("http://localhost:5000/promoter-invites/accepted/" + userId).then((response) => {
+    Axios.get(configData.SERVER_URL + "/promoter-invites/accepted/" + userId).then((response) => {
         setAttendingEvents(attendingEvents + response.data);
         console.log(response.data);
     });
@@ -65,7 +67,7 @@ const BioPage = (props) => {
     <div className={styles.rightContainer}>
      
       <div className={styles.horizontalContent}>
-        <ProfilePicture email={useremail} url={"http://localhost:5000/user-details/image/"} />
+        <ProfilePicture email={useremail} url={configData.SERVER_URL + "/user-details/image/"} />
 
         <div className={styles.verticalContent}>
           <div className={`${styles.boldtext} ${styles.alignleft}`}>
@@ -79,7 +81,7 @@ const BioPage = (props) => {
           <br />
         </div>
       </div>
-      <UserBio useremail={useremail} url="http://localhost:5000/user-details/biography/" />
+      <UserBio useremail={useremail} url={configData.SERVER_URL + "/user-details/biography/"} />
       <div className={styles.line} />
       <div className={styles.horizontalContent}>
         <div style={{ flex: "1" }}>

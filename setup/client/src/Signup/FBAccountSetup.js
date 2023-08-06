@@ -5,7 +5,7 @@ import styles from "../styles/common_styles.module.css";
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { EventTags } from '../pages/EventsTags'
-
+import configData from "../config.json";
 const FBAccountSetup = () => {
   // state for age and gender
   const [age, setAge] = useState(18);
@@ -31,7 +31,7 @@ const FBAccountSetup = () => {
     
     localStorage.setItem("tags", JSON.stringify([])); // DEV-CGP-19
 
-    await Axios.post("http://localhost:5000/login/facebook/first-time", {
+    await Axios.post(configData.SERVER_URL + "/login/facebook/first-time", {
       email: Email,
       username: userName,
       age: age,
@@ -41,7 +41,7 @@ const FBAccountSetup = () => {
       navigate('/dashboard?facebookEmail=' + Email, {}); // DEV-CGP-6
     });
 
-    await Axios.post("http://localhost:5000/api/userInterests/", {
+    await Axios.post(configData.SERVER_URL + "/api/userInterests/", {
       email: Email,
       interestList: userInterests,
     }).then(res => {

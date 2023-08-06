@@ -14,6 +14,7 @@ import EventItem from "../pages/EventItem";
 import UserInterests from "../components/Interests";
 import ProfilePicture from "../components/ProfilePicture";
 import { useNavigate } from "react-router";
+import configData from "../config.json";
 
 const BusinessDashboard = () => {
   const token = jwtDecode(localStorage.getItem("token"));
@@ -33,7 +34,7 @@ const BusinessDashboard = () => {
   ];
 
   useEffect(() => {
-    Axios.get("http://localhost:5000/api/userevents/" + token.id).then(
+    Axios.get(configData.SERVER_URL + "/api/userevents/" + token.id).then(
       response => {
         setEvents(response.data);
         console.log(response.data);
@@ -44,7 +45,7 @@ const BusinessDashboard = () => {
   return (
     <div className={styles.rightContainer}>
       <div className={styles.horizontalContent}>
-        <ProfilePicture email={email} url={"http://localhost:5000/business/image/"} />
+        <ProfilePicture email={email} url={configData.SERVER_URL + "/business/image/"} />
         <div className={styles.verticalContent}>
           <div className={`${styles.boldtext} ${styles.alignleft}`}>
             {businessName}
@@ -54,7 +55,7 @@ const BusinessDashboard = () => {
           </div>
         </div>
       </div>
-      <UserBio useremail={email} url="http://localhost:5000/business/biography/" />
+      <UserBio useremail={email} url={configData.SERVER_URL + "/business/biography/"} />
       <div className={styles.line} />
       <div
         style={{ marginLeft: "auto", marginRight: "0px", width: "min-content" }}

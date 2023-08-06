@@ -1,5 +1,7 @@
 import React from "react";
 
+import configData from "../config.json";
+
 import { useState } from "react";
 import { useEffect } from "react";
 
@@ -40,12 +42,12 @@ const InterestPopUp = ({
     setUserInterestList(selectedInterests);
 
     await Axios.delete(
-      "http://localhost:5000/api/userInterests/" + useremail
+      configData.SERVER_URL + "/api/userInterests/" + useremail
     ).then(response => {
       console.log({ msg: "User Interest document deleted!", response });
     });
 
-    await Axios.post("http://localhost:5000/api/userInterests/", {
+    await Axios.post(configData.SERVER_URL + "/api/userInterests/", {
       email: useremail,
       interestList: selectedInterests,
     }).then(res => {
@@ -101,7 +103,7 @@ const UserInterests = ({ interestList, useremail }) => {
 
   useEffect(() => {
     console.log({ useremail, interestList });
-    Axios.get("http://localhost:5000/api/userInterests/" + useremail)
+    Axios.get(configData.SERVER_URL + "/api/userInterests/" + useremail)
       .then(response => {
         // console.log("kikos");
         console.log(response);

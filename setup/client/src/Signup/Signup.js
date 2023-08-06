@@ -4,7 +4,7 @@ import { useState } from "react";
 import styles from "../styles/common_styles.module.css";
 
 import { Link } from "react-router-dom";
-
+import configData from "../config.json";
 import { Icon } from 'react-icons-kit'
 import {eye} from 'react-icons-kit/ionicons/eye'
 import {eyeDisabled} from 'react-icons-kit/ionicons/eyeDisabled'
@@ -68,7 +68,7 @@ const Signup = ({ signedUpCallback, loginRedirect }) => {
     }
 
     // attempt post operation
-    Axios.post("http://localhost:5000/email-auth/", {
+    Axios.post(configData.SERVER_URL + "/email-auth/", {
       email: email,
       password: password,
       username: username,
@@ -152,7 +152,7 @@ const Signup = ({ signedUpCallback, loginRedirect }) => {
 
         {/* DEV-CGP-6 */} 
         <button className={styles.facebookButton} >  
-          <a  href="http://localhost:5000/auth/facebook"> <FaFacebook /> </a>
+          <a  href={configData.SERVER_URL + "/auth/facebook"}> <FaFacebook /> </a>
         </button>
 
       </div>

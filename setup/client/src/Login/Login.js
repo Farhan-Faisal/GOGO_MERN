@@ -11,6 +11,7 @@ import StatelessPopup from "../CommonItems/StatelessPopup";
 import { FaFacebook } from "@react-icons/all-files/fa/FaFacebook"; // npm install @react-icons/all-files --save // DEV-CGP-6
 import { FaGoogle } from "@react-icons/all-files/fa/FaGoogle"; // npm install @react-icons/all-files --save
 import GoogleAuthButton from "../CommonItems/GoogleAuthButton";
+import configData from "../config.json";
 
 //const jwt = require("jsonwebtoken");
 
@@ -29,6 +30,7 @@ const Login = ({
   const [pwdIcon, setIcon] = useState(eye);
 
   useEffect(() => {
+    console.log(configData.SERVER_URL);
     localStorage.removeItem("userPic");
   }, []);
 
@@ -66,7 +68,7 @@ const Login = ({
     //post operation
 
     // const navigate = useNavigate();
-    Axios.post("http://localhost:5000/login", {
+    Axios.post(configData.SERVER_URL + "/login", {
       email: email,
       password: password,
     }).then(res => {
@@ -146,7 +148,7 @@ const Login = ({
 
         {/* DEV-CGP-6 */}
         <button className={styles.facebookButton}>
-          <a href="http://localhost:5000/auth/facebook">
+          <a href={configData.SERVER_URL + "/auth/facebook"}>
             {" "}
             <FaFacebook />{" "}
           </a>

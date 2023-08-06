@@ -10,6 +10,7 @@ import chatRoomStyle from "./ChatRoom.module.css";
 import ChatRoomList from "./ChatRoomList";
 import ChatMessageInput from "./ChatMessageInput";
 import ScrollableChatBox from "./ScrollableChatBox";
+import configData from "../config.json";
 
 // npm install @mui/icons-material @mui/material @emotion/styled @emotion/react
 // npm install socket.io
@@ -35,7 +36,7 @@ const ChatPage = () => {
     
     /*  Connect to socket backend || Need to specify url of socket server */
     useEffect(() => {
-        setSocket(io("http://localhost:5000")); 
+        setSocket(io(configData.SERVER_URL)); 
     }, []);
 
     /*  Join room and send-message event */
@@ -69,7 +70,7 @@ const ChatPage = () => {
 
     /* Get the existing chat history from mongoDB for this specific Room */
     const getChatHistory = async (roomID) => {
-        await Axios.get("http://localhost:5000/api/chats/usingRoomID/" + roomID)
+        await Axios.get(configData.SERVER_URL + "/api/chats/usingRoomID/" + roomID)
             .then((res) => { setChat(res.data.chatHistory); })
             .catch((error) => console.log(" this is the errorz" + error))
     }
@@ -84,7 +85,7 @@ const ChatPage = () => {
             socket.emit("end-typing", {roomID});
 
             // Make an API call to set chat history
-            await Axios.patch("http://localhost:5000/api/chats/" + roomID, {
+            await Axios.patch(configData.SERVER_URL + "/api/chats/" + roomID, {
                 newMessage:message,
                 currentChatHistory: chat,
             });

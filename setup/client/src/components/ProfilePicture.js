@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Axios from "axios";
-
+import configData from "../config.json";
 import { useState, useReducer } from "react";
 
 import styles from "../styles/common_styles.module.css";

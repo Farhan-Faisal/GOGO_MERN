@@ -6,6 +6,8 @@
     import styles from "../styles/common_styles.module.css";
     import EventItem from "../pages/EventItem";
     import jwtDecode from 'jwt-decode';
+    
+    import configData from "../config.json";
 
 function AttendingEvents() {
     const token = jwtDecode(localStorage.getItem("token"));
@@ -13,11 +15,11 @@ function AttendingEvents() {
     const [requests, setRequests] = useState([]);
 
     useEffect(() => {
-        Axios.get("http://localhost:5000/requests/accepted/" + token.id).then((response) => {
+        Axios.get(configData.SERVER_URL + "/requests/accepted/" + token.id).then((response) => {
             setRequests(response.data);
             console.log(response.data);
         });
-        Axios.get("http://localhost:5000/promoter-invites/accepted/" + token.id).then((response) => {
+        Axios.get(configData.SERVER_URL + "/promoter-invites/accepted/" + token.id).then((response) => {
             setRequests([...requests, ...response.data]);
             console.log(response.data);
         });

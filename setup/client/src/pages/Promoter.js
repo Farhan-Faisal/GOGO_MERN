@@ -3,6 +3,8 @@ import { useEffect, useState, useReducer } from "react";
 import PromoterRequestForMe from "../Requests/PromoterRequestForMe";
 import PromoterEvents from "../Requests/PromoterEvents";
 
+import configData from "../config.json";
+
 import Axios from "axios";
 
 import styles from "../styles/common_styles.module.css";
@@ -18,7 +20,7 @@ function Promoter() {
   const [, forceUpdate] = useReducer((x) => x + 1, 0);
 
   // useEffect(() => {
-  //   Axios.get("http://localhost:5000/requests/for/" + token.id)
+  //   Axios.get(configData.SERVER_URL + "/requests/for/" + token.id)
   //     .then((res) => {
   //       console.log(res.data);
   //       setForMeRequests(res.data);
@@ -41,20 +43,20 @@ function Promoter() {
   };
 
   useEffect(() => {
-    Axios.get("http://localhost:5000/promoter-requests/for/" + token.id)
+    Axios.get(configData.SERVER_URL + "/promoter-requests/for/" + token.id)
       .then((res) => {
         setRequests(res.data);
         console.log(res.data);
       })
       .catch((err) => console.log(err));
 
-    // Axios.get("http://localhost:5000/promoter-requests/pending/for/" + token.id)
+    // Axios.get(configData.SERVER_URL + "/promoter-requests/pending/for/" + token.id)
     // .then((res) => {
     //     setRequests(res.data);
     //     console.log(res.data);
     // })
     // .catch((err) => console.log(err));
-    // Axios.get("http://localhost:5000/promoter-requests/accepted/for/" + token.id)
+    // Axios.get(configData.SERVER_URL + "/promoter-requests/accepted/for/" + token.id)
     // .then((res) => {
     //     setRequests(...requests, res.data);
     //     console.log(res.data);

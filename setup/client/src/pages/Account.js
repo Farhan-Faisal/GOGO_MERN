@@ -1,5 +1,5 @@
 import React from "react";
-
+import configData from "../config.json";
 function Account(){
     return(
         <div className="page-title">

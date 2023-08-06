@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Axios from "axios";
 import jwt_decode from "jwt-decode";
-
+import configData from "../config.json";
 export default class ExamplePage extends Component {
   constructor(props) {
     super(props);

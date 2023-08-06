@@ -1,7 +1,7 @@
 import React from "react";
 
 import styles from "../styles/common_styles.module.css";
-
+import configData from "../config.json";
 import { FaFilter } from "@react-icons/all-files/fa/FaFilter"; // npm install @react-icons/all-files --save
 import { EventTagsPopup } from "./EventsTags";
 

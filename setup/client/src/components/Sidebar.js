@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { SidebarData } from "./SidebarData";
 import { BusinessSidebarData } from "./BusinessSidebarData";
-
+import configData from "../config.json";
 import sidebarStyles from "../styles/sidebar.module.css";
 import jwtDecode from "jwt-decode";
 

@@ -4,7 +4,7 @@ import styles from "../styles/common_styles.module.css";
 
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import configData from "../config.json";
 import { EventTags } from '../pages/EventsTags'
 
 const AccountSetup = ({ accountSetupCallback, email, username, url, successfunc }) => {
@@ -18,7 +18,7 @@ const AccountSetup = ({ accountSetupCallback, email, username, url, successfunc 
   const navigate = useNavigate();
 
   // DEV-CGP-5: custom url for making users
-  const requestUrl = (url === undefined) ? "http://localhost:5000/user-details/" : url;
+  const requestUrl = (url === undefined) ? configData.SERVER_URL + "/user-details/" : url;
 
   // function to check age when a user enters it
   const checkAndSetAge = (val) => {
@@ -43,7 +43,7 @@ const AccountSetup = ({ accountSetupCallback, email, username, url, successfunc 
       navigate(accountSetupCallback, {email: email}); // DEV-CGP-6
     });
 
-    await Axios.post("http://localhost:5000/api/userInterests/", {
+    await Axios.post(configData.SERVER_URL + "/api/userInterests/", {
       email: email,
       interestList: userInterests,
     }).then(res => {

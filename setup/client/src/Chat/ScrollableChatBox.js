@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import chatRoomStyle from "./ChatRoom.module.css";
-
+import configData from "../config.json";
 const ScrollableChatBox = ({ chat, userEmail }) => {
   // These variables will help us scroll our divs to the dorrect position
   const outerDiv = useRef(null);

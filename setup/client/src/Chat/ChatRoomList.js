@@ -2,12 +2,13 @@ import { useEffect, useState} from "react";
 import Axios from "axios";
 import jwt_decode from "jwt-decode";
 import chatRoomStyle from "./ChatRoom.module.css";
+import configData from "../config.json";
 
 const ChatRoomList = ({userEmail, roomID, setRoomID, getChatHistory, setBuddyUsername}) => {
     const [userRoomDocs, setUserRoomDocs] = useState([]);
 
     useEffect(() => {
-        Axios.get("http://localhost:5000/api/chats/" + userEmail)
+        Axios.get(configData.SERVER_URL + "/api/chats/" + userEmail)
         .then((res) => { setUserRoomDocs(res.data); })
         .catch((res) => { console.log("Error retreiving user chat rooms"); })
     }, []);

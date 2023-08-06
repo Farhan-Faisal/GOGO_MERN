@@ -3,7 +3,7 @@ import RequestsForMe from "./RequestsForMe";
 
 import styles from "../styles/common_styles.module.css";
 import { useState } from "react";
-
+import configData from "../config.json";
 const RequestsPage = () => {
     const [requestToggle, setRequestToggle] = useState(false);
 

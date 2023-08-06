@@ -4,6 +4,8 @@ import AccountSetup from "../Signup/AccountSetup";
 import axios from "axios";
 import { useNavigate } from "react-router";
 
+import configData from "../config.json";
+
 import styles from "../styles/common_styles.module.css";
 
 const GoogleAuthButton = () => {
@@ -21,7 +23,7 @@ const GoogleAuthButton = () => {
     setEmail(email);
     setUsername(name);
     axios
-      .post("http://localhost:5000/login/google/check", {
+      .post(configData.SERVER_URL + "/login/google/check", {
         email: email,
       })
       .then(res => {
@@ -60,7 +62,7 @@ const GoogleAuthButton = () => {
       email={email}
       username={username}
       accountSetupCallback={"/dashboard"}
-      url={"http://localhost:5000/login/facebook/first-time"}
+      url={configData.SERVER_URL + "/login/facebook/first-time"}
       successfunc={res => {
         localStorage.setItem("token", res.data.token);
       }}

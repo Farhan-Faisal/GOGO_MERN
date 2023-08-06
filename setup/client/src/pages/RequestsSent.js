@@ -1,6 +1,6 @@
 import styles from "../styles/common_styles.module.css";
 import requestSentStyles from "../styles/RequestsSent.module.css";
-
+import configData from "../config.json";
 function RequestsSent() {
   const requestSent = [];
   return (

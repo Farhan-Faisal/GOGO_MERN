@@ -3,13 +3,15 @@ import styles from "../styles/common_styles.module.css";
 
 import axios from "axios";
 
+import configData from "../config.json";
+
 import EventItem from "../pages/EventItem";
 
 const InviteItemByMe = ({ _id, event, invitee, status, setInvite }) => {
     //TODO: DELETE REQUEST to delete the request
     const deleteInvite = () => {
         axios
-            .delete("http://localhost:5000/promoter-invites/delete/" + _id)
+            .delete(configData.SERVER_URL + "/promoter-invites/delete/" + _id)
             .then(res => {
                 setInvite(prev => prev.filter(r => r._id !== _id));
             })

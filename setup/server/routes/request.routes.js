@@ -5,7 +5,7 @@ let RequestModel = require("../models/request.model");
 /* 
     //example usage
 
-    Axios.post("http://localhost:5000/requests/", {
+    Axios.post(process.env.BASE_URL + "/requests/", {
         requester: rand_email_id,
         event: rand_event_id
     })
@@ -43,7 +43,7 @@ router.route("/").post((req, res) => {
 /* 
     //example usage (take requester_id from the session token)
 
-    Axios.get("http://localhost:5000/requests/by/requester_id", {})
+    Axios.get(process.env.BASE_URL + "/requests/by/requester_id", {})
     .then(res => {
         // do stuff...
     })
@@ -78,7 +78,7 @@ router.route("/accepted/:requester").get((req, res) => {
 /* 
     //example usage
 
-    Axios.get("http://localhost:5000/requests/for/requestee_id", {})
+    Axios.get(process.env.BASE_URL + "/requests/for/requestee_id", {})
     .then(res => {
         // do stuff...
     })
@@ -107,7 +107,7 @@ router.route("/for/:requestee").get((req, res) => {
 /* 
     //example usage
 
-    Axios.get("http://localhost:5000/requests/event/event_id", {})
+    Axios.get(process.env.BASE_URL + "/requests/event/event_id", {})
     .then(res => {
         // do stuff...
     })
@@ -145,7 +145,7 @@ router.route("/pending/:event").get((req, res) => {
 
     //example usage
 
-    Axios.post("http://localhost:5000/requests/search", {
+    Axios.post(process.env.BASE_URL + "/requests/search", {
         requester: requester@mail.com
         requestee: requestss@mail.com
         event_id: rand_email_id
@@ -155,7 +155,7 @@ router.route("/pending/:event").get((req, res) => {
 
     // all filters are optional, here's another example
 
-    Axios.post("http://localhost:5000/requests/search", {
+    Axios.post(process.env.BASE_URL + "/requests/search", {
         requester: requester@mail.com
     }).then(res => {
         // do stuff...
@@ -176,7 +176,7 @@ router.route('/search').post(
 /* 
     //example usage
 
-    Axios.post("http://localhost:5000/requests/delete/request_id")
+    Axios.post(process.env.BASE_URL + "/requests/delete/request_id")
     .then(res => {
         // do stuff...
     })

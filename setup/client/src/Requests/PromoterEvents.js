@@ -6,7 +6,7 @@ import EventItem from "../pages/EventItem";
 import styles from "../styles/common_styles.module.css";
 import requestSentStyles from "../styles/RequestsSent.module.css";
 import requestStyles from "../styles/requests.module.css";
-
+import configData from "../config.json";
 import Axios from "axios";
 
 const PromoterInvites = ({ event }) => {
@@ -19,7 +19,7 @@ const PromoterInvites = ({ event }) => {
 
     const getRequestData = () => {
       Axios.get(
-        "http://localhost:5000/promoter-invites/event/" + event.event._id
+        configData.SERVER_URL + "/promoter-invites/event/" + event.event._id
       ).then((response) => {
         setRequestData(response.data);
         console.log(response.data);
@@ -31,7 +31,7 @@ const PromoterInvites = ({ event }) => {
         return;
       }
       try {
-        await Axios.post("http://localhost:5000/promoter-invites/", {
+        await Axios.post(configData.SERVER_URL + "/promoter-invites/", {
           promoterEmail: loggedUserEmail,
           inviteeEmail: userEmail,
           event: event._id,
@@ -45,7 +45,7 @@ const PromoterInvites = ({ event }) => {
 
     useEffect(() => {
       Axios.get(
-        "http://localhost:5000/promoter-invites/event/" + event.event._id
+        configData.SERVER_URL + "/promoter-invites/event/" + event.event._id
       ).then((response) => {
         setRequestData(response.data);
         console.log(response.data);

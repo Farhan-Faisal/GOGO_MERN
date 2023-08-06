@@ -5,7 +5,7 @@ import Axios from "axios";
 
 import styles from "../styles/common_styles.module.css";
 import jwtDecode from "jwt-decode";
-
+import configData from "../config.json";
 const RequestsByMe = () => {
     const token = jwtDecode(localStorage.getItem("token"));
     console.log(token);
@@ -13,7 +13,7 @@ const RequestsByMe = () => {
     const [requests, setRequests] = useState([]);
 
     useEffect(() => {
-        Axios.get("http://localhost:5000/requests/by/" + token.id)
+        Axios.get(configData.SERVER_URL + "/requests/by/" + token.id)
             .then(res => {
                 setRequests(res.data);
                 console.log(res.data);
