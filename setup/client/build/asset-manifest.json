@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/GOGO_MERN/static/css/main.a3f5bf0e.css",
-    "main.js": "/GOGO_MERN/static/js/main.52333672.js",
+    "main.js": "/GOGO_MERN/static/js/main.4dd50dab.js",
     "index.html": "/GOGO_MERN/index.html",
     "main.a3f5bf0e.css.map": "/GOGO_MERN/static/css/main.a3f5bf0e.css.map",
-    "main.52333672.js.map": "/GOGO_MERN/static/js/main.52333672.js.map"
+    "main.4dd50dab.js.map": "/GOGO_MERN/static/js/main.4dd50dab.js.map"
   },
   "entrypoints": [
     "static/css/main.a3f5bf0e.css",
-    "static/js/main.52333672.js"
+    "static/js/main.4dd50dab.js"
   ]
 }

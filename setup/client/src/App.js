@@ -46,7 +46,7 @@ function App() {
         <Routes>
           {/* elements common to both businesses and users */}
           <Route
-            path="/"
+            path="/GOGO_MERN"
             element={
               <Login
                 loggedInCallBack={"/dashboard"}
