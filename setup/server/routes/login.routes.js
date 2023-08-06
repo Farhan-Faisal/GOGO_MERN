@@ -53,7 +53,7 @@ router.route("/").post(async (req, res) => {
             email: userDetail.email,
             username: userDetail.username,
             age: userDetail.age,
-            gender: userDetail.gender
+            gender: userDetail.gender,
           },
           isBusiness: false,
         },
@@ -89,6 +89,90 @@ router.route("/").get((req, res) => {
   } catch (e) {
     return res.status(401).send("unauthorized");
   }
+});
+
+/* DEV-CGP-6 */
+router.route("/token/:fb_email").get(async (req, res) => {
+  try {
+    const userDetail = await UserDetailModel.findOne({
+      email: req.params.fb_email,
+    });
+    console.log(userDetail);
+    res.send(userDetail);
+  } catch {
+    res.status(404);
+    res.send({ error: "User does not exist" });
+  }
+});
+
+router.route("/facebook/first-time").post(async (req, res) => {
+  try {
+    const userDetail = new UserDetailModel({
+      email: req.body.email,
+      username: req.body.username,
+      age: req.body.age,
+      gender: req.body.gender,
+    });
+
+    userDetail.save().then(async () => {
+      console.log("new user made");
+      var savedUser = await UserDetailModel.findOne({ email: req.body.email });
+      const token = jwt.sign(
+        {
+          id: savedUser._id,
+          userDetail: {
+            email: savedUser.email,
+            username: savedUser.username,
+            age: savedUser.age,
+            gender: savedUser.gender,
+          },
+          isBusiness: false,
+        },
+        "shhhhh",
+        { expiresIn: "2h" }
+      );
+      savedUser.token = token;
+      await savedUser.save();
+
+      console.log(savedUser);
+      res.send({ token: token });
+    });
+  } catch {
+    res.status(404);
+    res.send({ error: "User does not exist" });
+  }
+});
+
+//DEV-CGP-5: check if account with google login exists
+router.route("/google/check").post(async (req, res) => {
+  var googleUser = await UserDetailModel.findOne({
+    email: req.body.email,
+  });
+  console.log({ googleUser });
+  if (googleUser) {
+    try {
+      const token = jwt.sign(
+        {
+          id: googleUser._id,
+          userDetail: {
+            email: googleUser.email,
+            username: googleUser.username,
+            age: googleUser.age,
+            gender: googleUser.gender,
+          },
+          isBusiness: false,
+        },
+        "shhhhh",
+        { expiresIn: "2h" }
+      );
+      googleUser.token = token;
+      await googleUser.save();
+      res.send({ user: googleUser, isBusiness: false });
+    } catch {
+      res.status(404);
+      res.send({ error: "unable to generate token" });
+    }
+  } else res.json({ user: null });
 });
 
 module.exports = router;

@@ -1,0 +1,98 @@
+.unorderedList {
+    display: flex;
+    background-color: #3e3e3e;
+    text-align: start;
+    list-style-type: none;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 10px;
+    padding: 0px;
+    
+}
+
+.inviteCard {
+    width: 400px;
+    display: flex;
+    align-items: baseline;
+    border: 1px outset white;
+    padding: 5px;
+    visibility: visible;
+    position: relative;
+    opacity: 1;
+    margin: 10px;
+    transition: visibility .4s ease-in,opacity .4s ease-in;
+    color:#FFFFFF;
+}
+
+.inviteCardContent {
+    display: flex;
+    margin: 10px;
+    text-align: center;
+    flex-direction: column;
+}
+
+
+.inviteCardStatus {
+    margin-left: auto;
+    align-self: center;
+}
+
+.eventPhoto{
+    width: 100px ;
+    background-color: #df6cff ;
+    height: 100px ;
+    text-align: center;
+    margin: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.inviteButtons button{
+    display:block;
+}
+
+.acceptButton {
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    background-color: #AD03DE;
+    color: #FFFFFF;
+    border-width: 0;
+    padding: 0 10px;
+    width: min-content;
+    transition-duration: 0.4s;
+    white-space: nowrap;
+    border-radius: 5px;
+    text-decoration: none;
+    margin: 10px;
+    cursor: pointer;
+    position: absolute;
+    right:    0;
+    bottom:   0;
+}
+.acceptButton:hover {
+    background-color: #df6cff;
+}
+
+.rejectButton {
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    background-color: #AD03DE;
+    color: #FFFFFF;
+    border-width: 0;
+    padding: 0 10px;
+    width: min-content;
+    transition-duration: 0.4s;
+    white-space: nowrap;
+    border-radius: 5px;
+    text-decoration: none;
+    margin: 10px;
+    cursor: pointer;
+    position: absolute;
+    right:    0;
+    top:   0;
+}
+.rejectButton:hover {
+    background-color: #df6cff;
+}

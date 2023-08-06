@@ -4,9 +4,25 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const app = express();
 const port = process.env.PORT || 5000;
+const passport = require("passport");
 
 require("dotenv").config();
 
+/* Boiler plate code to for cross origin applications */
+app.use(cors());
+app.use(express.json());
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: true },
+  })
+);
+
+/* Setup passport server */ // DEV-CGP-6
+app.use(passport.initialize());
+app.use(passport.session());
 
 /*
   - Create an HTTP server using app
@@ -60,8 +76,6 @@ const sockets_bioler_plate = (socket) => {
 io.on("connection", sockets_bioler_plate);
 
 /* Boiler plate code to connect to mongoDB */
-app.use(cors());
-app.use(express.json());
 app.use(express.static('public'));
 
 /* Need this as part of Multer Configuration */
@@ -93,6 +107,8 @@ const requestsRouter = require("./routes/request.routes");
 const promoterRequestRouter = require("./routes/promoterRequest.routes");
 const eventLinkRouter = require("./routes/eventLink.routes");
 const businessRouter = require("./routes/businessAccounts.routes");
+const promoterInviteRouter = require("./routes/promoterInvite.routes");
+const facebookRouter = require("./routes/facebook.routes")
 
 // connect routers
 app.use("/api", chatRouter);
@@ -106,23 +122,16 @@ app.use("/requests", requestsRouter);
 app.use("/promoter-requests", promoterRequestRouter);
 app.use("/api", eventLinkRouter);
 app.use("/business", businessRouter);
+app.use("/promoter-invites", promoterInviteRouter);
 /* 
     - If more API_End_Point files (routes) have been added in the routes folder, only need to make changes in this section
     - Currently, routers for only two routes have been set up
     - In the routers below, need to give path to the js file containing the routes/API_End_Points
 */
 app.use("/api", chatRouter);
+app.use("/", facebookRouter);
 
 /* Listen on port 5000 */
-app.use(
-  session({
-    secret: "keyboard cat",
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: true },
-  })
-);
-
 httpServer.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });

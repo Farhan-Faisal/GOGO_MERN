@@ -8,6 +8,7 @@ import jwtDecode from "jwt-decode";
 
 function Sidebar({ isBusiness }) {
   const [data, setData] = useState(SidebarData);
+  const [trigger, setTrigger] = useState(false);
 
   useEffect(() => {
     const rawToken = localStorage.getItem("token");
@@ -31,9 +32,16 @@ function Sidebar({ isBusiness }) {
             return (
               <li key={index}>
                 <Link to={page.path} style={{ textDecoration: "none" }}>
-                  <div className={sidebarStyles.transparentButton}>
-                    {page.title}
-                  </div>
+                  {page.title.localeCompare("Logout") === 0 ? (
+                    <div className={sidebarStyles.transparentButton} onClick={() => localStorage.removeItem("token")}>
+                      {page.title}
+                    </div>
+                  ):(
+                    <div className={sidebarStyles.transparentButton}>
+                      {page.title}
+                    </div>
+                    )
+                  }
                 </Link>
               </li>
             );

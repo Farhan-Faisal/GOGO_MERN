@@ -3,7 +3,8 @@ import "./App.css";
 import Sidebar from "./components/Sidebar";
 import BioPage from "./components/BioPage";
 import Dashboard from "./pages/Dashboard";
-import Invites from "./pages/Invites";
+import Invites from "./Invites/Invites";
+import Promoter from "./pages/Promoter";
 import Account from "./pages/Account";
 import Logout from "./pages/Logout";
 import CreateEvents from "./pages/CreateEvents";
@@ -20,8 +21,12 @@ import ChatPage from "./Chat/ChatPage";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import Socket from "./Socket";
 import jwtDecode from "jwt-decode";
+import AccountSetup from "./Signup/AccountSetup";
+import FBAccountSetup from "./Signup/FBAccountSetup"; // DEV-CGP-6
+
+
+
 function App() {
   const [isBusiness, setIsBusiness] = useState(false);
   const rawToken = localStorage.getItem("token");
@@ -57,7 +62,6 @@ function App() {
               <SignupHub accountSetupCallback={"/"} loginRedirect={"/"} />
             }
           />
-          <Route path="/logout" exact element={<Logout />} />
 
           {isBusiness /* elements specific to businesses */ ? (
             <>
@@ -66,7 +70,6 @@ function App() {
                 exact
                 element={<BusinessDashboard />}
               />
-              <Route path="/promoters" exact element={<PromotersPage />} />
               <Route
                 path="/create-events"
                 exact
@@ -77,13 +80,11 @@ function App() {
           ) : (
             /* elements specific to users */
             <>
+              <Route path="/account-setup" exact element={<FBAccountSetup />} />
               <Route path="/dashboard" exact element={<Dashboard />} />
-              <Route
-                path="/create-events"
-                exact
-                element={<CreateEvents back={"/dashboard"} />}
-              />
+              <Route path="/create-events" exact element={<CreateEvents back={"/dashboard"} />} />
               <Route path="/invites" exact element={<Invites />} />
+              <Route path="/promoter" exact element={<Promoter />} />
               <Route path="/account" exact element={<Account />} />
               <Route path="/bio-page" exact element={<BioPage />} />
               <Route path="/chats" exact element={<ChatPage />} />

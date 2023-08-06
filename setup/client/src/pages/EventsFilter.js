@@ -36,6 +36,7 @@ const EventsFilter = ({
       <EventTagsPopup 
         popupTrigger={popupTrigger} setPopupTrigger={getEventsList} // Slightly hacky
         selectedTags={selectedTags} setSelectedTags={setSelectedTags}
+        saveTags={tags => localStorage.setItem("tags", JSON.stringify(tags))} //DEV-CGP-23
       />
     </>
   )

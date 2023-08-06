@@ -20,6 +20,10 @@ const emailAuth = new mongoose.Schema({
         required: [true, 'Username is required'],
         minLength: [2, 'Username too short'],
     },
+    facebookID: { // DEV-CGP-6
+        type:String,
+        default: null
+    },
     isBusiness: {
         type: Boolean,
         default: false,

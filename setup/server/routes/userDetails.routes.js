@@ -9,7 +9,7 @@ const multer = require('multer');
 const fs = require('fs');
 const multerStorage = multer. diskStorage( {
   destination: (req, file,cb) => {
-    cb(null, '../server/public/uploads');
+    cb(null, 'public/uploads');
   },
   
   filename: (req, file, cb) => {
@@ -96,6 +96,28 @@ router.route("/image").post(upload.single("profilePic"), async(req, res) => {
     console.log(err);
     res.status(404);
     res.send(err);
+  }
+});
+
+
+
+/* DEV-CGP-6 */
+
+router.route("/biopage/account_setup/:useremail").patch(async (req, res) => {
+
+  try {
+    UserDetailsModel.updateOne(
+      {
+        email: req.params.useremail
+      },{
+        $set:{ age: req.body.age, gender: req.body.gender}
+      })
+    res.status(204).send();
+  }
+  catch{
+      // res.status(404)
+      // res.send({ error: "Post doesn't exist!" })
+      console.log("Error updating chat room");
   }
 });
 

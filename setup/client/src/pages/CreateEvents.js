@@ -6,6 +6,7 @@ import "./CreateEvents.css";
 import styles from "../styles/common_styles.module.css";
 import ceStyles from "./CreateEvents.module.css";
 import jwt_decode from "jwt-decode";
+import StatelessPopup from "../CommonItems/StatelessPopup";
 
 import { EventTags } from "./EventsTags";
 
@@ -13,6 +14,7 @@ function CreateEvents() {
   const token = jwt_decode(localStorage.getItem("token"));
   console.log(token);
   const creator = token.id;
+  const creator_ref = token.isBusiness ? "business-details" : "user-details";
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
   const [location, setLocation] = useState("");
@@ -26,6 +28,9 @@ function CreateEvents() {
   // DEV-CGP-9
   const [selectedTags, setSelectedTags] = useState(["Other"]);
   const [popupTrigger, setPopupTrigger] = useState(false);
+
+  // DEV-CGP-22
+  const [infoTrigger, setInfoTrigger] = useState(false);
 
   // const [createdUserEvents, setCreatedUserEvents] = useState([]);
 
@@ -76,6 +81,7 @@ function CreateEvents() {
     const formData = new FormData();
     formData.append("eventID", newUUID);
     formData.append("creator", creator);
+    formData.append("creator_ref", creator_ref);
     formData.append("title", title);
     formData.append("date", date);
     formData.append("location", location);
@@ -166,6 +172,18 @@ function CreateEvents() {
             <div className={styles.verticalContent}>
               <div className={styles.division}>
                 <p className={styles.text}>Are tickets OnMe?</p>
+                <button type="button" className={ceStyles.onMeInfo} onClick={() => setInfoTrigger(true)}>i</button>
+                <StatelessPopup trigger={infoTrigger} setTrigger={setInfoTrigger}>
+                  <div className={styles.text}>
+                    Introducing the "OnMe" feature!
+                  </div>
+                  <br></br>
+                  <div style={{color: "white", fontSize: "20px"}}>
+                    This unique feature allows event creators to choose whether they will cover the cost of tickets
+                    or make everyone foot the bill.
+                    Let's be honest, who would say no to a sparkly free ticket? 🎟️✨
+                  </div>
+                </StatelessPopup>
                 <br />
               </div>
               <div className={styles.division}>
@@ -238,6 +256,7 @@ function CreateEvents() {
                   setSelectedTags={setSelectedTags}
                   popupTrigger={popupTrigger}
                   setPopupTrigger={setPopupTrigger}
+                  saveTags={setSelectedTags}
                 />
               </div>
             </div>
@@ -254,6 +273,7 @@ function CreateEvents() {
                 name="eventPic"
                 onChange={(e) => {
                   setEventPic(e.target.files[0]);
+                  console.log(e.target.files);
                 }}
                 style={{ color: "white" }}
               />

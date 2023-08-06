@@ -34,7 +34,7 @@ router.route("/").post((req, res) => {
           res.json({ msg: "request was not issued", err: err });
         });
     } else {
-      res.json({ msg: "request already exists" });
+      res.json({ msg: "request already exists", exists: true });
     }
   });
 });

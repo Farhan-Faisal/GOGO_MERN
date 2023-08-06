@@ -20,6 +20,9 @@ const EventItem = ({ event }) => {
           <p className={styles.smalltext}>{event.date}</p>
           <p className={styles.smalltext}>{event.location}</p>
           <p className={styles.smalltext}>from ${event.price}</p>
+          {event.onMe === true &&
+              <p className={eventStyles.eventOnMe}>{"\u2705"} ON ME</p>
+          }
         </div>
       </div>
     </>

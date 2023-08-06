@@ -7,7 +7,11 @@ const eventSchema = new mongoose.Schema({
     creator: {
         type: mongoose.Schema.Types.ObjectId,
         required: [true, 'Creator info is required'],
-        ref: 'user-details',
+        refPath: "creator_ref",
+    },
+    creator_ref: {
+        type: String,
+        required: true,
     },
     title: {
         type: String,
@@ -44,6 +48,10 @@ const eventSchema = new mongoose.Schema({
     tags: {
         type: [String],
         required: true,
+    },
+    // For Quiz 4
+    numRequests: {
+        type: Number,
     }
 });
 

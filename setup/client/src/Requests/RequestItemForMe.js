@@ -156,7 +156,7 @@ const RequestItemForMe = ({ event }) => {
 
   return (
     <div key={event._id} style={{ margin: "10px" }}>
-      <Popup content={(c) => onClick(event, c)}>
+      <Popup content={(c) => onClick(event, c)} popupStyle = "old">
         <EventItem event={event} />
       </Popup>
     </div>

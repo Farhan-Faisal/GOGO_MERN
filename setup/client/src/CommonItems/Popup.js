@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "../styles/common_styles.module.css";
 
-const Popup = ({ content, popupState, children }) => {
+const Popup = ({ content, popupState, children, popupStyle }) => {
   const [isOpen, setIsOpen] = useState(popupState === true);
 
   const c = content(() => setIsOpen(false));
@@ -10,7 +10,7 @@ const Popup = ({ content, popupState, children }) => {
     <>
       {isOpen ? (
         <div className={styles.popupbg}>
-          <div className={styles.popup}>
+          <div className={popupStyle == "old"? styles.popup_old: styles.popup}>
             <div
               style={{
                 marginLeft: "auto",

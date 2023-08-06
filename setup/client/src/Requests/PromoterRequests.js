@@ -103,7 +103,7 @@ const PromoterRequestsPage = () => {
                 </div>
                 <div className={requestSentStyles.promoterAcceptedInvites}>
                   <text>Number of accepted invites:</text>
-                  <p>1</p>
+                  <p>{req.numAcceptedInvites}</p>
                 </div>
               </li>
             ))}
@@ -146,7 +146,7 @@ const PromoterRequestsPage = () => {
         {myEvents &&
           myEvents.map((event) => (
             <div key={event._id} style={{ margin: "10px" }}>
-              <Popup content={(c) => Content(c, event)}>
+              <Popup content={(c) => Content(c, event)} popupStyle = "old"> 
                 <EventItem event={event} />
               </Popup>
             </div>

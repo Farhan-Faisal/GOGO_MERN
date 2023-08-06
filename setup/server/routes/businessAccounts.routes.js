@@ -10,7 +10,7 @@ const multer = require('multer');
 const fs = require('fs');
 const multerStorage = multer. diskStorage( {
   destination: (req, file,cb) => {
-    cb(null, '../server/public/uploads');
+    cb(null, 'public/uploads');
   },
   
   filename: (req, file, cb) => {

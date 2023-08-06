@@ -1,0 +1,16 @@
+services:
+  client:
+    image: perfectstrangers/setup-client:v1.0.1
+    ports:
+      - 3000:3000
+    networks:
+      - gogo-network
+
+  server:
+    image: perfectstrangers/setup-server:v1.0.1
+    ports: 
+      - 5000:5000
+    networks:
+      - gogo-network
+networks:
+  gogo-network:

@@ -9,6 +9,9 @@ import { Icon } from 'react-icons-kit'
 import {eye} from 'react-icons-kit/ionicons/eye'
 import {eyeDisabled} from 'react-icons-kit/ionicons/eyeDisabled'
 import StatelessPopup from "../CommonItems/StatelessPopup";
+import { FaFacebook } from "@react-icons/all-files/fa/FaFacebook"; // npm install @react-icons/all-files --save // DEV-CGP-6
+import { FaGoogle } from "@react-icons/all-files/fa/FaGoogle"; // npm install @react-icons/all-files --save
+import GoogleAuthButton from "../CommonItems/GoogleAuthButton";
 
 const Signup = ({ signedUpCallback, loginRedirect }) => {
   // signedUpCallBack = (JSON object) => {...do stuff, doesn't care for the return value}
@@ -72,12 +75,6 @@ const Signup = ({ signedUpCallback, loginRedirect }) => {
     }).then(res => {
       if (res.data.msg === "user created") {
         // new user is created
-
-        /* dispatch(updateUserInfo({
-                    email: email,
-                    username: username
-                })); */
-
         signedUpCallback(email, username);
       }
 
@@ -150,8 +147,14 @@ const Signup = ({ signedUpCallback, loginRedirect }) => {
         <div className={styles.line}></div>
       </div>
       <div className={styles.division}>
-        <button style={{ flex: 1 }}>TODO: Google Auth</button>
-        <button style={{ flex: 1 }}>TODO: Facebook (not Meta) Auth</button>
+
+        <GoogleAuthButton />
+
+        {/* DEV-CGP-6 */} 
+        <button className={styles.facebookButton} >  
+          <a  href="http://localhost:5000/auth/facebook"> <FaFacebook /> </a>
+        </button>
+
       </div>
 
       <div className={styles.footnoteDiv}>

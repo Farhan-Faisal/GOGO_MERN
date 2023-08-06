@@ -49,8 +49,9 @@
 
 .requestButtons{
     display:flex;
+    margin-left: auto;
     flex-flow: column;
-    align-self: center;
+    align-self: right;
     justify-content: center;
 }
 
