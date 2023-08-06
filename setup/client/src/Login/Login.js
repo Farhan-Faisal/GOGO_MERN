@@ -11,6 +11,7 @@ import StatelessPopup from "../CommonItems/StatelessPopup";
 import { FaFacebook } from "@react-icons/all-files/fa/FaFacebook"; // npm install @react-icons/all-files --save // DEV-CGP-6
 import { FaGoogle } from "@react-icons/all-files/fa/FaGoogle"; // npm install @react-icons/all-files --save
 import GoogleAuthButton from "../CommonItems/GoogleAuthButton";
+
 import configData from "../config.json";
 
 //const jwt = require("jsonwebtoken");
