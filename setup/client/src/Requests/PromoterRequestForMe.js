@@ -82,7 +82,7 @@ const PromoterRequestForMe = ({ event, changeRequestStatusCallback }) => {
           {eventData.map(() => (
             <li className={requestSentStyles.requestSentCard}>
               <img
-                src={`http://localhost:5000/uploads/` + event.event.creator.image}
+                src={configData.SERVER_URL + "/uploads/" + event.event.creator.image}
                 alt="No photo"
                 className={requestSentStyles.eventPhoto}
               />

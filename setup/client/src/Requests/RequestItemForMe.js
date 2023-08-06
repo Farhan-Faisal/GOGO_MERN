@@ -116,7 +116,7 @@ const RequestItemForMe = ({ event }) => {
           {requestData.map((req) => (
             <li className={requestSentStyles.requestSentCard}>
               <img
-                src={`http://localhost:5000/uploads/` + req.requester.image}
+                src={configData.SERVER_URL + "/uploads/" + req.requester.image}
                 alt="No photo"
                 className={requestSentStyles.eventPhoto}
               />

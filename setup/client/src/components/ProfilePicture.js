@@ -102,7 +102,7 @@ const ProfilePicture = ({ email, url }) => {
       >
         <img
           className={bioPageStyles.ProfilePicture}
-          src={`http://localhost:5000/uploads/` + profilePicName}
+          src={configData.SERVER_URL + "/uploads/" + profilePicName}
           alt="No image"
         />
       </button>

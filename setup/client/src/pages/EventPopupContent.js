@@ -45,7 +45,7 @@ const EventPopupContent = ({ userid, event, index, setEvent, close }) => {
   ];
 
   useEffect(() => {
-    setImagesrc(`http://localhost:5000/uploads/` + event.image);
+    setImagesrc(configData.SERVER_URL + "/uploads/" + event.image);
     setTitle(event.title);
     setDate(event.date);
     setLocation(event.location);
@@ -61,7 +61,7 @@ const EventPopupContent = ({ userid, event, index, setEvent, close }) => {
   const staticContent = (
     <div style={{ width: "780px", flexDirection: "row" }}>
       <img
-        src={`http://localhost:5000/uploads/` + event.image}
+        src={configData.SERVER_URL + "/uploads/" + event.image}
         alt="No photo"
         className={eventStyles.expandedPhoto}
       />

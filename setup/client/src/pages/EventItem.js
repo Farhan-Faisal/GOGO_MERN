@@ -11,7 +11,7 @@ const EventItem = ({ event }) => {
         {/* For CGP-12 */}
         <div className={eventStyles.eventPhotoContainer}>
         <img
-            src={`http://localhost:5000/uploads/` + event.image}
+            src={configData.SERVER_URL + "/uploads/" + event.image}
             alt="No photo"
             className={eventStyles.eventPhoto}
         />

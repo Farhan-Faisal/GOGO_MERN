@@ -89,7 +89,7 @@ const PromoterRequestsPage = () => {
             .map((req) => (
               <li className={requestSentStyles.requestSentCard}>
                 <img
-                  src={`http://localhost:5000/uploads/` + req.requestee.image}
+                  src={configData.SERVER_URL + "/uploads/" + req.requestee.image}
                   alt="No photo"
                   className={requestSentStyles.eventPhoto}
                 />
@@ -115,7 +115,7 @@ const PromoterRequestsPage = () => {
             .map((req) => (
               <li className={requestSentStyles.requestSentCard}>
                 <img
-                  src={`http://localhost:5000/uploads/` + req.requestee.image}
+                  src={configData.SERVER_URL + "/uploads/" + req.requestee.image}
                   alt="No photo"
                   className={requestSentStyles.eventPhoto}
                 />

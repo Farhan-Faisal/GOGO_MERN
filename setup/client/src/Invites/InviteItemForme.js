@@ -79,7 +79,7 @@ const InviteItemForMe = ({ _id, invitee, promoter, event, status, setInvite }) =
     return (
         <div className={inviteStyles.inviteCard} style={{ rightmargin: "100px" }}>
               <img
-                src={`http://localhost:5000/uploads/` + event.image}
+                src={configData.SERVER_URL + "/uploads/" + event.image}
                 alt="No photo"
                 className={requestSentStyles.eventPhoto}
               />
