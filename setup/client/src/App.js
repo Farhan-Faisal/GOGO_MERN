@@ -41,7 +41,7 @@ function App() {
 
   return (
     <div>
-      <Router>
+      <Router basename={"/GOGO_MERN"}>
         <Sidebar isBusiness={isBusiness} />
         <Routes>
           {/* elements common to both businesses and users */}

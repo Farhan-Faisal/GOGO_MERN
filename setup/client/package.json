@@ -1,6 +1,7 @@
 {
   "name": "client",
   "version": "0.1.0",
+  "homepage": "https://Farhan-Faisal.github.io/GOGO_MERN",
   "jest": {
     "transformIgnorePatterns": [
       "node_modules/(?!(axios)/)"
@@ -51,6 +52,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "deploy": "gh-pages -d build",
     "build:": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

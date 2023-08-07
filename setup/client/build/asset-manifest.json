@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/static/css/main.a3f5bf0e.css",
-    "main.js": "/static/js/main.52333672.js",
-    "index.html": "/index.html",
-    "main.a3f5bf0e.css.map": "/static/css/main.a3f5bf0e.css.map",
-    "main.52333672.js.map": "/static/js/main.52333672.js.map"
+    "main.css": "/GOGO_MERN/static/css/main.a3f5bf0e.css",
+    "main.js": "/GOGO_MERN/static/js/main.8acd89da.js",
+    "index.html": "/GOGO_MERN/index.html",
+    "main.a3f5bf0e.css.map": "/GOGO_MERN/static/css/main.a3f5bf0e.css.map",
+    "main.8acd89da.js.map": "/GOGO_MERN/static/js/main.8acd89da.js.map"
   },
   "entrypoints": [
     "static/css/main.a3f5bf0e.css",
-    "static/js/main.52333672.js"
+    "static/js/main.8acd89da.js"
   ]
 }
