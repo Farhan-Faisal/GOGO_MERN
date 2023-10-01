@@ -55,3 +55,8 @@ We are open to contributors. To contribute to this project the following steps a
 We use Jira to track issues.
 Branch name should be of the form "`Type of branch`-`Jira ticket number`".
 Every contribution to the project must be approved in a pull request.
+
+## Demo of a subset of Features
+https://github.com/Farhan-Faisal/GOGO_MERN/assets/77621905/6be8f11e-0026-4efd-9241-04540c6c3fb7
+
+
