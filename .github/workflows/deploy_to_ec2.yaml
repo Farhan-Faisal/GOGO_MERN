@@ -1,0 +1,26 @@
+name: deploy-server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+
+  deploy:
+    name: Deploy to EC2 on main branch
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout the files
+        uses: actions/checkout@v2
+
+      - name: Install node modules
+        run: cd /home/ec2-user/actions-runner/_work/gift-app/gift-app/server && npm i
+        
+      - name: start server
+        run: cd /home/ec2-user/actions-runner/_work/gift-app/gift-app/server && pm2 restart server.js
+
+      - name: Restart NGINX
+        run: sudo service nginx restart
+      
