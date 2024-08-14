@@ -2,7 +2,7 @@ import RequestsByMe from "./RequestsByMe";
 import RequestsForMe from "./RequestsForMe";
 
 import styles from "../../styles/common_styles.module.css";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import configData from "../../config.json";
 
 const RequestsPage = () => {
