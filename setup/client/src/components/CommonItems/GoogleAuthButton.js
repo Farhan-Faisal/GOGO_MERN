@@ -1,9 +1,11 @@
 import jwt_decode from "jwt-decode";
+import React, { useEffect, useState } from "react";
 import AccountSetup from "../../pages/Signup/AccountSetup";
 import axios from "axios";
 import { useNavigate } from "react-router";
-import React from "react";
+
 import configData from "../../config.json";
+
 import styles from "../../styles/common_styles.module.css";
 
 const GoogleAuthButton = () => {
