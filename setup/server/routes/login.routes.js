@@ -1,7 +1,6 @@
 const router = require("express").Router();
 let EmailAuthModel = require("../models/emailAuth.model");
 let UserDetailModel = require("../models/userDetails.model");
-let BusinessDetailsModel = require("../models/businessDetails.model");
 const jwt = require("jsonwebtoken");
 
 router.route("/").post(async (req, res) => {
@@ -13,34 +12,7 @@ router.route("/").post(async (req, res) => {
     password: password,
   });
 
-  if (emailAuth && emailAuth.isBusiness === true) {
-    // business login
-    try {
-      var businessDetail = await BusinessDetailsModel.findOne({
-        email: emailAuth.email,
-      });
-      const token = jwt.sign(
-        {
-          id: businessDetail._id,
-          businessDetail: {
-            email: businessDetail.email,
-            businessName: businessDetail.businessName,
-          },
-          isBusiness: true,
-        },
-        "shhhhh",
-        {
-          expiresIn: "2h",
-        }
-      );
-      console.log("Business saved " + token);
-      businessDetail.token = token;
-      await businessDetail.save();
-      res.json({ user: businessDetail, isBusiness: true });
-    } catch (error) {
-      throw new Error("Failed to generate token", error);
-    }
-  } else if (emailAuth) {
+  if (emailAuth){
     // Login successful
     try {
       var userDetail = await UserDetailModel.findOne({

@@ -1,28 +1,16 @@
 const router = require("express").Router();
 let RequestModel = require("../models/request.model");
 
-// POST REQUEST: create a request
-/* 
-    //example usage
-
-    Axios.post(process.env.BASE_URL + "/requests/", {
-        requester: rand_email_id,
-        event: rand_event_id
-    })
-    .then(res => {
-        // do stuff...
-    })
-*/
 router.route("/").post((req, res) => {
   RequestModel.findOne({
     requester: req.body.requester,
-    event: req.body.event,
+    requestee: req.body.requestee
   }).then((ans) => {
     if (ans === null) {
       const newRequest = new RequestModel({
         requester: req.body.requester,
         status: "pending",
-        event: req.body.event,
+        requestee: req.body.requestee,
       });
 
       newRequest

@@ -5,16 +5,6 @@ export const SidebarData = [
     cName: "nav-text",
   },
   {
-    title: "Invites",
-    path: "/invites",
-    cName: "nav-text",
-  },
-  {
-    title: "Promoter",
-    path: "/promoter",
-    cName: "nav-text",
-  },
-  {
     title: "Requests",
     path: "/requests",
     cName: "nav-text",

@@ -15,10 +15,10 @@ const request = new mongoose.Schema({
         },
         default: 'pending',
     },
-    event: {
+    requestee: {
         type: mongoose.Schema.Types.ObjectId,
-        required: [true, 'Event info is required'],
-        ref: 'userevents',
+        required: [true, 'Requestee info is required'],
+        ref: 'user-details',
     }
 })
 
