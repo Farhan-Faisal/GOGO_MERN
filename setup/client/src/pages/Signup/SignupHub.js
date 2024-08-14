@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Signup from "./Signup";
 import AccountSetup from "./AccountSetup";
-
+import React from "react";
 // compound component for the signup page and account setup page.
 import configData from "../../config.json";
 const SignupHub = ({ accountSetupCallback, loginRedirect }) => {

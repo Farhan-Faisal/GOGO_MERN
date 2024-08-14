@@ -1,5 +1,6 @@
 import styles from "../../styles/common_styles.module.css";
 import configData from "../../config.json";
+import React, { useState } from "react";
 const StatelessPopup = ({ trigger, setTrigger, children }) => {
   return trigger ? (
     <div className={styles.popupbg}>

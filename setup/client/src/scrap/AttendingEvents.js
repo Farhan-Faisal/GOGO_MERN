@@ -1,13 +1,13 @@
-    import React from "react";
-    import { Link } from "react-router-dom";
-    import { useEffect, useState } from "react";
-    import Axios from "axios";
+import React from "react";
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import Axios from "axios";
 
-    import styles from "../styles/common_styles.module.css";
-    import EventItem from "../pages/UserItem";
-    import jwtDecode from 'jwt-decode';
-    
-    import configData from "../config.json";
+import styles from "../styles/common_styles.module.css";
+import EventItem from "../pages/UserItem";
+import jwtDecode from 'jwt-decode';
+
+import configData from "../config.json";
 
 function AttendingEvents() {
     const token = jwtDecode(localStorage.getItem("token"));

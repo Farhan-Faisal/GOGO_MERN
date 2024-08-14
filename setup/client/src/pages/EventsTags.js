@@ -2,6 +2,7 @@ import styles from "../styles/common_styles.module.css";
 import ceStyles from "./CreateEvents.module.css";
 import StatelessPopup from "../components/CommonItems/StatelessPopup";
 import configData from "../config.json";
+import React from "react";
 
 const EventTagsPopup = ({ popupTrigger, setPopupTrigger, selectedTags, setSelectedTags, saveTags}) => {
 

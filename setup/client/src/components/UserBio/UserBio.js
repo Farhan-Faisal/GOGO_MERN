@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Axios from "axios";
-
+import React from "react";
 import styles from "../../styles/common_styles.module.css";
 import configData from "../../config.json";
 
