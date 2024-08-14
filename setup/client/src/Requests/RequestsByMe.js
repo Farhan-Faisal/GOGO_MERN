@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import RequestItemByMe from "./RequestItemByMe";
-
+import jwt_decode from "jwt-decode";
 import Axios from "axios";
 import axios from "axios";
 
@@ -8,22 +8,25 @@ import styles from "../styles/common_styles.module.css";
 import jwtDecode from "jwt-decode";
 import configData from "../config.json";
 
-const RequestsByMe = ({userid}) => {
+const RequestsByMe = () => {
     const token = jwtDecode(localStorage.getItem("token"));
     console.log(token);
 
     const [myRequests, setMyRequests] = useState([]);
 
     const [queryUserFound, setQueryUserFound] = useState(false);
+    const [queryUserEmail, setQueryUserEmail] = useState("");
 
-    const [processed, setProcessed] = useState(true);
+    const [processed, setProcessed] = useState(false);
     const [processedMessage, setProcessedMessage] = useState("");
 
     const makeRequest = (requestee) => {
+        alert(jwt_decode(localStorage.getItem("token")).id + " " + requestee);
         axios.post(configData.SERVER_URL + "/requests/", {
-            requester: userid,
+            requester: jwt_decode(localStorage.getItem("token")).id,
             requestee: requestee,
         }).then(res => {
+        
         setProcessed(true);
         setProcessedMessage(res.data.msg);
         });
@@ -33,7 +36,6 @@ const RequestsByMe = ({userid}) => {
         axios.get(configData.SERVER_URL + "/user-details/image/" + queryEmail)
             .then((res) => {
                 makeRequest(res.data._id)
-                setQueryUserFound(true)
             })
             .catch((err) => console.log(err));
     }
@@ -42,38 +44,37 @@ const RequestsByMe = ({userid}) => {
         Axios.get(configData.SERVER_URL + "/requests/by/" + token.id)
             .then(res => {
                 setMyRequests(res.data);
+                setProcessed(false);
                 console.log(res.data);
             })
             .catch(err => console.log(err));
-    }, []);
+    }, [processed]);
 
+    
     return (
-    <div  style={{display: "flex", alignItems: "left"}}>
-        <div className={styles.wrapContainer} 
-            style={{width: "300px", margin: "20px", textAlign: "right", position: "relative", right: "20px"}}>
-            
+    <div className={styles.wrapContainer} 
+        style={{width: "300px", margin: "20px", textAlign: "right", position: "relative", right: "20px"}}>
+        {/* <div  style={{display: "flex", alignItems: "left", marginLeft: "auto", marginRight: "0px"}}> */}
             <input 
                 type="text" id="chatInput" placeholder="Type your message here..." 
-                style={{ width: "100%", padding: "10px", fontSize: "16px", 
-                    border: "1px solid #ccc", borderRadius: "5px",
-                }}
+                style={{ margin: "10px", width: "100%", padding: "10px", fontSize: "16px", }}
+                onChange={(event) => setQueryUserEmail(event.target.value)}
             />
     
-            <div style={{ width: "min-content", marginLeft: "auto", marginRight: "0px", }} >
-                <button className={styles.smallPurpleButton} onClick={makeRequest} >
-                    make a request
-                </button>
-            </div>
-        </div>
+            <button className={styles.smallPurpleButton} onClick={(event) => queryUser(queryUserEmail)} >
+                make a request
+            </button>
+        {/* </div> */}
         
-        {requests.map(req => (
+        {myRequests.map(req => (
+            // console.log(req)
             <RequestItemByMe
                 key={req._id}
                 _id={req._id}
                 requestee={req.requestee}
-                event={req.event}
+                requester={req.requester}
                 status={req.status}
-                setRequests={setRequests}
+                setMyRequests={setMyRequests}
             />
         ))}{" "}
     </div>

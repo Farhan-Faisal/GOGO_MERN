@@ -81,6 +81,7 @@ router.route("/image/:useremail").get(async (req, res) => {
   }
 });
 
+
 router.route("/image").post(upload.single("profilePic"), async(req, res) => {
   console.log("POST request is made");
   console.log(req.file.filename);

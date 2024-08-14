@@ -36,18 +36,22 @@ router.route("/").post((req, res) => {
         // do stuff...
     })
 */
-// router.route("/by/:requester").get((req, res) => {
-//   RequestModel.find({ requester: req.params.requester })
-//     .populate([
-//       "requester",
-//       {
-//         path: "event",
-//         populate: { path: "creator" },
-//       },
-//     ])
-//     .then((r) => res.status(202).json(r))
-//     .catch((err) => res.json({ err: err }));
-// });
+router.route("/by/:requester").get((req, res) => {
+  RequestModel.find({ requester: req.params.requester })
+    .populate("requester")
+    .populate("requestee")
+    .then((r) => res.status(202).json(r))
+    .catch((err) => res.json({ err: err }));
+});
+
+router.route("/for/:requestee").get((req, res) => {
+  RequestModel.find({ requestee: req.params.requestee })
+    .populate("requester")
+    .populate("requestee")
+    .then((r) => res.status(202).json(r))
+    .catch((err) => res.json({ err: err }));
+});
+
 
 // router.route("/accepted/:requester").get((req, res) => {
 //   RequestModel.find({ requester: req.params.requester, status: "accepted" })
@@ -112,6 +116,13 @@ router.route("/").post((req, res) => {
 //     .then((r) => res.status(202).json(r))
 //     .catch((err) => res.status(400).json({ err: err }));
 // });
+
+router.route("/delete/:_id").delete((req, res) => {
+  //console.log(req.body.requester);
+  RequestModel.deleteOne({ _id: req.params._id })
+    .then((r) => res.status(203).json(r))
+    .catch((err) => res.json({ err: err }));
+});
 
 //Return pending 
 router.route("/pending/:event").get((req, res) => {

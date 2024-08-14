@@ -1,18 +1,18 @@
 import requestStyles from "../styles/requests.module.css";
 import styles from "../styles/common_styles.module.css";
-
+// import jwt_decode from "jwt-decode";
 import axios from "axios";
 
 import UserItem from "../pages/UserItem";
 import configData from "../config.json";
 
-const RequestItemByMe = ({ _id, username, image, status, setRequests }) => {
+const RequestItemByMe = ({ _id, username, image, status, setMyRequests }) => {
     //TODO: DELETE REQUEST to delete the request
     const deleteRequest = () => {
         axios
             .delete(configData.SERVER_URL + "/requests/delete/" + _id)
             .then(res => {
-                setRequests(prev => prev.filter(r => r._id !== _id));
+                setMyRequests(prev => prev.filter(r => r._id !== _id));
             })
             .catch(err => console.log(err));
     };
