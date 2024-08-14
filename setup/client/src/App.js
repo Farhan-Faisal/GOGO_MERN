@@ -1,20 +1,20 @@
 import React, { useEffect } from "react";
-import "./App.css";
-import Sidebar from "./components/Sidebar";
-import BioPage from "./components/BioPage";
-import Account from "./pages/Account";
-import Logout from "./pages/Logout";
-import SignupHub from "./Signup/SignupHub";
-import Login from "./Login/Login";
-import RequestsPage from "./Requests/RequestsPage";
+import "./styles/App.css";
+import Sidebar from "./components/SideBar/Sidebar";
+import BioPage from "./pages/BioPage/BioPage";
+import Account from "./components/SideBar/Account";
+import Logout from "./components/SideBar/Logout";
+import SignupHub from "./pages/Signup/SignupHub";
+import Login from "./pages/Login/Login";
+import RequestsPage from "./pages/Requests/RequestsPage";
 
-import ChatPage from "./Chat/ChatPage";
+import ChatPage from "./pages/Chat/ChatPage";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import jwtDecode from "jwt-decode";
-import AccountSetup from "./Signup/AccountSetup";
-import FBAccountSetup from "./Signup/FBAccountSetup"; // DEV-CGP-6
+import AccountSetup from "./pages/Signup/AccountSetup";
+import FBAccountSetup from "./pages/Signup/FBAccountSetup"; // DEV-CGP-6
 
 import configData from "./config.json";
 
