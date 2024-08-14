@@ -3,6 +3,7 @@ import Axios from "axios";
 
 import styles from "../styles/common_styles.module.css";
 import configData from "../config.json";
+
 const UserBio = ({ useremail, url }) => {
   const maxChar = 200;
   let [aboutText, setAboutText] = useState("");

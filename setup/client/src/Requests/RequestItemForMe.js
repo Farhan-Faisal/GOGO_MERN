@@ -42,6 +42,25 @@ const RequestItemForMe = ({ _id, username, image, requestee, requester, status, 
       });
     }, []);
 
+    const rejectRequest = (reqId) => {
+      try {
+        console.log(reqId);
+        const reqIndex = requestData.findIndex(({ _id }) => _id === reqId);
+  
+        axios.patch(configData.SERVER_URL + "/requests/reject/" + _id);
+  
+        if (reqIndex !== -1) {
+          setRequestData([
+            ...requestData.slice(0, reqIndex),
+            ...requestData.slice(reqIndex + 1),
+          ]);
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    };
+      
+
     const acceptRequest = (reqId) => {
       try {
         // Get username and password
@@ -89,7 +108,7 @@ const RequestItemForMe = ({ _id, username, image, requestee, requester, status, 
 
     return (
         <div className={requestStyles.request} style={{display: "flex", alignItems: "left", marginLeft: "auto", marginRight: "0px"}}>
-            <UserItem username={username} image={image} disableRequest={true} />
+            <UserItem user={requester} disableRequest={true} />
             <div className={styles.horizontalContent}>
                 <div
                     style={{

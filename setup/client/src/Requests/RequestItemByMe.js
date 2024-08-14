@@ -6,7 +6,7 @@ import axios from "axios";
 import UserItem from "../pages/UserItem";
 import configData from "../config.json";
 
-const RequestItemByMe = ({ _id, username, image, status, setMyRequests }) => {
+const RequestItemByMe = ({ _id, status, requester, requestee, setMyRequests }) => {
     //TODO: DELETE REQUEST to delete the request
     const deleteRequest = () => {
         axios
@@ -19,7 +19,7 @@ const RequestItemByMe = ({ _id, username, image, status, setMyRequests }) => {
 
     return (
         <div className={requestStyles.request}>
-            <UserItem username={username} image={image} disableRequest={true} />
+            <UserItem user={requestee} disableRequest={true} />
             <div className={styles.horizontalContent}>
                 <div
                     style={{
@@ -35,6 +35,7 @@ const RequestItemByMe = ({ _id, username, image, status, setMyRequests }) => {
                 <button
                     className={styles.smallPurpleButton}
                     onClick={deleteRequest}
+                    style={{ display: status === "pending" ? 'block' : 'none' }}
                 >
                     Cancel Request
                 </button>
