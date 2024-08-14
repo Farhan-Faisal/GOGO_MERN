@@ -20,6 +20,7 @@ const multerStorage = multer. diskStorage( {
 const upload = multer ({storage: multerStorage});
 
 router.route("/").post((req, res) => {
+  console.log(req.body.email, 'XXXXXXXXXXXXXXXXXXXXXXXX');
   const newUserDetails = new UserDetailsModel({
     email: req.body.email,
     username: req.body.username,

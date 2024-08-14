@@ -5,27 +5,18 @@ import requestSentStyles from "../styles/RequestsSent.module.css";
 import eventStyles from "../styles/event.module.css";
 import Popup from "../CommonItems/Popup";
 import jwt_decode from "jwt-decode";
-import EventItem from "../pages/EventItem";
 import configData from "../config.json";
 import Axios from "axios";
+import UserItem from "../pages/UserItem";
 
-const RequestItemForMe = ({ event }) => {
-  //TODO: DELETE REQUEST to delete the request
-  //   const deleteRequest = () => {
-  //     axios
-  //       .delete(configData.SERVER_URL + "/requests/delete/" + _id)
-  //       .then((res) => {
-  //         setRequests((prev) => prev.filter((r) => r._id !== _id));
-  //       })
-  //       .catch((err) => console.log(err));
-  //   };
+const RequestItemForMe = ( {username, image} ) => {
   const [requestData, setRequestData] = useState([]);
   const [, forceUpdate] = useReducer((x) => x + 1, 0);
 
   async function fetchRequest() {
     try {
       const res = await Axios.get(
-        configData.SERVER_URL + "/requests/pending/" + event._id
+        configData.SERVER_URL + "/requests/pending/"
       );
       return res.data;
     } catch (e) {
@@ -155,9 +146,9 @@ const RequestItemForMe = ({ event }) => {
   }
 
   return (
-    <div key={event._id} style={{ margin: "10px" }}>
-      <Popup content={(c) => onClick(event, c)} popupStyle = "old">
-        <EventItem event={event} />
+    <div style={{ margin: "10px" }}>
+      <Popup content={(event, c) => onClick(event, c)} popupStyle = "old">
+        <UserItem username={username} image={image} disableRequest={true} />
       </Popup>
     </div>
   );

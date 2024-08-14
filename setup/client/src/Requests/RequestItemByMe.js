@@ -3,9 +3,10 @@ import styles from "../styles/common_styles.module.css";
 
 import axios from "axios";
 
-import EventItem from "../pages/EventItem";
+import UserItem from "../pages/UserItem";
 import configData from "../config.json";
-const RequestItemByMe = ({ _id, event, status, setRequests }) => {
+
+const RequestItemByMe = ({ _id, username, image, status, setRequests }) => {
     //TODO: DELETE REQUEST to delete the request
     const deleteRequest = () => {
         axios
@@ -18,7 +19,7 @@ const RequestItemByMe = ({ _id, event, status, setRequests }) => {
 
     return (
         <div className={requestStyles.request}>
-            <EventItem event={event} disableRequest={true} />
+            <UserItem username={username} image={image} disableRequest={true} />
             <div className={styles.horizontalContent}>
                 <div
                     style={{

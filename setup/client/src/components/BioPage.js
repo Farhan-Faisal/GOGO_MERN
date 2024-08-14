@@ -11,12 +11,11 @@ import UserInterests from "./Interests";
 import jwt_decode from "jwt-decode";
 
 import UserBio from "./UserBio";
-import EventItem from "../pages/EventItem";
+import EventItem from "../pages/UserItem";
 import ProfilePicture from "./ProfilePicture";
 
 import styles from "../styles/common_styles.module.css";
 import bioPageStyles from "../styles/bio_page.module.css";
-import AttendingEvents from "./AttendingEvents";
 
 import StatelessPopup from "../CommonItems/StatelessPopup"; // DEV-CGP-6
 
@@ -39,23 +38,6 @@ const BioPage = (props) => {
   var useremail = token.userDetail.email;
   var userId = token.id;
   const displayName = token.userDetail.username;
-
-  useEffect(() => {
-    Axios.get(configData.SERVER_URL + "/api/userevents/" + userId).then(
-      (response) => {
-        setEvents(response.data);
-        console.log(response.data);
-      }
-    );
-    Axios.get(configData.SERVER_URL + "/requests/accepted/" + userId).then((response) => {
-        setAttendingEvents(response.data);
-        console.log(response.data);
-    });
-    Axios.get(configData.SERVER_URL + "/promoter-invites/accepted/" + userId).then((response) => {
-        setAttendingEvents(attendingEvents + response.data);
-        console.log(response.data);
-    });
-  }, []);
 
   /* DEV-CGP-6 */
   const age = token.userDetail.age;
@@ -83,39 +65,6 @@ const BioPage = (props) => {
       </div>
       <UserBio useremail={useremail} url={configData.SERVER_URL + "/user-details/biography/"} />
       <div className={styles.line} />
-      <div className={styles.horizontalContent}>
-        <div style={{ flex: "1" }}>
-          <button
-            className={styles.smallTransparentButton}
-            onClick={() => setEventToggle(false)}
-            disabled={!eventToggle}
-          >
-            My Events
-          </button>
-        </div>
-
-        <div style={{ flex: "1" }}>
-          <button
-            className={styles.smallTransparentButton}
-            onClick={() => setEventToggle(true)}
-            disabled={eventToggle}
-          >
-            Events I'm Attending
-          </button>
-        </div>
-      </div>
-
-      {eventToggle ? <AttendingEvents /> : (
-          <div className={styles.wrapContainer}>
-          {events &&
-              events.map((event) => (
-                  <div key={event._id} style={{margin: "10px"}}>
-                      <EventItem event={event} />
-                  </div>
-              ))}
-          </div>
-      )}
-      
     </div>
   );
 };

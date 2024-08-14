@@ -7,17 +7,17 @@ import axios from "axios";
 import styles from "../styles/common_styles.module.css";
 
 
-const RequestsForMe = (userid) => {
+const RequestsForMe = ({_id, username, image, status, setRequests}) => {
   const token = jwtDecode(localStorage.getItem("token"));
   const [forMeRequests, setForMeRequests] = useState([]);
-  const [myEvents, setMyEvents] = useState([]);
+  const [myUsers, setMyusers] = useState([]);
 
   console.log(token);
 
   useEffect(() => {
     axios.get(configData.SERVER_URL + "/api/myevent/" + token.id)
       .then((res) => {
-        setMyEvents(res.data);
+        setMyusers(res.data);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -25,10 +25,8 @@ const RequestsForMe = (userid) => {
   
   return (
     <div className={styles.wrapContainer} >
-      {myEvents.map((event) => (
-        <RequestItemForMe
-          event={event}
-        />
+      {myUsers.map((event) => (
+        <RequestItemForMe username={username} image={image} disableRequest={true} />
       ))}{" "}
     </div>
   );

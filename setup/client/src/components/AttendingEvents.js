@@ -4,7 +4,7 @@
     import Axios from "axios";
 
     import styles from "../styles/common_styles.module.css";
-    import EventItem from "../pages/EventItem";
+    import EventItem from "../pages/UserItem";
     import jwtDecode from 'jwt-decode';
     
     import configData from "../config.json";

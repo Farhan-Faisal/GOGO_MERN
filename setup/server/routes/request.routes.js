@@ -36,31 +36,31 @@ router.route("/").post((req, res) => {
         // do stuff...
     })
 */
-router.route("/by/:requester").get((req, res) => {
-  RequestModel.find({ requester: req.params.requester })
-    .populate([
-      "requester",
-      {
-        path: "event",
-        populate: { path: "creator" },
-      },
-    ])
-    .then((r) => res.status(202).json(r))
-    .catch((err) => res.json({ err: err }));
-});
+// router.route("/by/:requester").get((req, res) => {
+//   RequestModel.find({ requester: req.params.requester })
+//     .populate([
+//       "requester",
+//       {
+//         path: "event",
+//         populate: { path: "creator" },
+//       },
+//     ])
+//     .then((r) => res.status(202).json(r))
+//     .catch((err) => res.json({ err: err }));
+// });
 
-router.route("/accepted/:requester").get((req, res) => {
-  RequestModel.find({ requester: req.params.requester, status: "accepted" })
-    .populate([
-      "requester",
-      {
-        path: "event",
-        populate: { path: "creator" },
-      },
-    ])
-    .then((r) => res.status(202).json(r))
-    .catch((err) => res.json({ err: err }));
-});
+// router.route("/accepted/:requester").get((req, res) => {
+//   RequestModel.find({ requester: req.params.requester, status: "accepted" })
+//     .populate([
+//       "requester",
+//       {
+//         path: "event",
+//         populate: { path: "creator" },
+//       },
+//     ])
+//     .then((r) => res.status(202).json(r))
+//     .catch((err) => res.json({ err: err }));
+// });
 
 // GET REQUEST: get a list of requests by who received them
 /* 
@@ -71,25 +71,25 @@ router.route("/accepted/:requester").get((req, res) => {
         // do stuff...
     })
 */
-router.route("/for/:requestee").get((req, res) => {
-  console.log("For");
-  RequestModel.find()
-    .populate({
-      path: "event",
-      populate: { path: "creator", model: "user-details" },
-    })
-    .then((r) =>
-      res
-        .status(202)
-        .json(
-          r.filter((request) => request.event.creator && request.event.creator.equals(req.params.requestee))
-        )
-    ) // remove unmatched requests
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
+// router.route("/for/:requestee").get((req, res) => {
+//   console.log("For");
+//   RequestModel.find()
+//     .populate({
+//       path: "event",
+//       populate: { path: "creator", model: "user-details" },
+//     })
+//     .then((r) =>
+//       res
+//         .status(202)
+//         .json(
+//           r.filter((request) => request.event.creator && request.event.creator.equals(req.params.requestee))
+//         )
+//     ) // remove unmatched requests
+//     .catch((err) => {
+//       console.log(err);
+//       res.status(500).json(err);
+//     });
+// });
 
 // GET REQUEST: get a list of requests by event_id
 /* 
@@ -100,80 +100,25 @@ router.route("/for/:requestee").get((req, res) => {
         // do stuff...
     })
 */
-router.route("/event/:event").get((req, res) => {
-  RequestModel.find({ event: req.params.event })
-    .populate([
-      "requester",
-      {
-        path: "event",
-        populate: { path: "creator" },
-      },
-    ])
-    .then((r) => res.status(202).json(r))
-    .catch((err) => res.status(400).json({ err: err }));
-});
+// router.route("/event/:event").get((req, res) => {
+//   RequestModel.find({ event: req.params.event })
+//     .populate([
+//       "requester",
+//       {
+//         path: "event",
+//         populate: { path: "creator" },
+//       },
+//     ])
+//     .then((r) => res.status(202).json(r))
+//     .catch((err) => res.status(400).json({ err: err }));
+// });
 
 //Return pending 
 router.route("/pending/:event").get((req, res) => {
   RequestModel.find({ event: req.params.event, status: "pending" })
-    .populate([
-      "requester",
-      {
-        path: "event",
-        populate: { path: "creator" },
-      },
-    ])
+    .populate("requestee")
     .then((r) => res.status(202).json(r))
     .catch((err) => res.status(400).json({ err: err }));
-});
-
-/* 
-
-// POST REQUEST: get a list of requests based on a filter passed in the body
-
-    //example usage
-
-    Axios.post(process.env.BASE_URL + "/requests/search", {
-        requester: requester@mail.com
-        requestee: requestss@mail.com
-        event_id: rand_email_id
-    }).then(res => {
-        // do stuff...
-    })
-
-    // all filters are optional, here's another example
-
-    Axios.post(process.env.BASE_URL + "/requests/search", {
-        requester: requester@mail.com
-    }).then(res => {
-        // do stuff...
-    })
-
-
-router.route('/search').post(
-    (req, res) => {
-        //console.log(req.body.requester);
-        RequestModel.find(req.body)
-        .then(r => res.status(202).json(r))
-        .catch(err => res.json({err: err}))
-    }
-)
- */
-
-// DELETE REQUEST: delete a request object by its _id
-/* 
-    //example usage
-
-    Axios.post(process.env.BASE_URL + "/requests/delete/request_id")
-    .then(res => {
-        // do stuff...
-    })
- */
-router.route("/delete/:_id").delete((req, res) => {
-  //console.log(req.body.requester);
-  RequestModel.deleteOne({ _id: req.params._id })
-    .then((r) => res.status(203).json(r))
-    .catch((err) => res.json({ err: err }));
 });
 
 // PATCH REQUEST: accept the request by its _id

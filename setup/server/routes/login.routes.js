@@ -12,7 +12,7 @@ router.route("/").post(async (req, res) => {
     password: password,
   });
 
-  if (emailAuth){
+  if (emailAuth) {
     // Login successful
     try {
       var userDetail = await UserDetailModel.findOne({

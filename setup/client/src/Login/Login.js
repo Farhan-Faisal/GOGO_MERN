@@ -20,7 +20,6 @@ const Login = ({
   loggedInCallBack,
   businessLoggedInCallBack,
   SignUpRedirect,
-  setIsBusiness,
 }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -56,8 +55,6 @@ const Login = ({
     // called when the form is submitted
     event.preventDefault(); // don't update page
 
-    //     // preprocessing errors
-
     if (email === "") {
       throwErrMsg("Please enter Email");
       return;
@@ -81,11 +78,7 @@ const Login = ({
         console.log("Login success");
 
         localStorage.setItem("token", res.data.user.token);
-        const isBusiness = res.data.isBusiness;
-        setIsBusiness(isBusiness);
-        isBusiness
-          ? navigate(businessLoggedInCallBack, {})
-          : navigate(loggedInCallBack, {});
+        navigate(loggedInCallBack, {});
       } else {
         throwErrMsg(res.data.err);
         console.log(res.data.err);

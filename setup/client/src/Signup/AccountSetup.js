@@ -32,13 +32,14 @@ const AccountSetup = ({ accountSetupCallback, email, username, url, successfunc 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
 
-    Axios.post(requestUrl, {
+    await Axios.post(requestUrl, {
       email: email,
       username: username,
       age: age,
       gender: gender,
     }).then((res) => {
-      console.log(res);
+      console.log(url);
+      console.log(email);
       if (successfunc !== undefined) successfunc(res);// DEV-CGP-5: call a custom function after successful account setup
       navigate(accountSetupCallback, {email: email}); // DEV-CGP-6
     });
