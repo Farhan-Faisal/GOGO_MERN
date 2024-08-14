@@ -29,7 +29,7 @@ function App() {
 
   return (
     <div>
-      <Router basename={"/GOGO_MERN"}>
+      <Router basename={"/"}>
         <Sidebar isBusiness={false} />
         <Routes>
           
