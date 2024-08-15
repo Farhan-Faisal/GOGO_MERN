@@ -4,7 +4,17 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const app = express(); ///
 const port = process.env.PORT || 5000;
+// const securePort = 8443;
 const passport = require("passport");
+
+// const fs = require('fs');
+
+// // SSL STUFF
+// // const file = fs.readFileSync('./E51B39781622D62F940D155DF9A345D4.txt');
+// const key = fs.readFileSync('private.key');
+// const cert = fs.readFileSync('certificate.crt');
+// const cred = {key, cert}
+
 
 require("dotenv").config();
 
@@ -130,5 +140,5 @@ app.get("/", (req, res) => {
 
 /* Listen on port 5000 */
 httpServer.listen(port, () => {
-  console.log(`Server is running on port: ${port}`);
+  console.log(`Server is running on port: ${port} || Deployed by CI/CD`);
 });
