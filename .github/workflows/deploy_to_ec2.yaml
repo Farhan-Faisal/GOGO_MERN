@@ -16,10 +16,10 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install node modules
-        run: cd /home/ec2-user/actions-runner/_work/GOGO_MERN/setup/server && npm i
+        run: cd /home/ec2-user/actions-runner/_work/GOGO_MERN/GOGO_MERN/setup/server && npm i
         
       - name: start server
-        run: cd /home/ec2-user/actions-runner/_work/GOGO_MERN/setup/server && pm2 restart server.js
+        run: cd /home/ec2-user/actions-runner/_work/GOGO_MERN/GOGO_MERN/setup/server && pm2 restart server.js
 
       - name: Restart NGINX
         run: sudo service nginx restart
