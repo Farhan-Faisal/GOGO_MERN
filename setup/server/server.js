@@ -135,7 +135,7 @@ app.use("/", facebookRouter);
     - Server deployment indication
 */
 app.get("/", (req, res) => {
-	res.json({ message: "GoGo server running on port 5000"});
+	res.json({ message: `Server is running on port: ${port} || Deployed by CI/CD`});
 });
 
 /* Listen on port 5000 */
