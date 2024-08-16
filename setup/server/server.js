@@ -138,7 +138,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/.well-known/pki-validation/59D849BDD04E1038E8E83E8DB34231EE.txt", (req, res) => {
-    res.sendFile('actions-runner/_work/GOGO_MERN/GOGO_MERN/setup/server/SSLFiles/59D849BDD04E1038E8E83E8DB34231EE.txt');
+    res.sendFile('./59D849BDD04E1038E8E83E8DB34231EE.txt', {root: __dirname});
 })
 
 /* Listen on port 5000 */
