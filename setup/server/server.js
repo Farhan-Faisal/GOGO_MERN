@@ -4,13 +4,12 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const app = express(); ///
 const port = process.env.PORT || 5000;
-// const securePort = 8443;
+const securePort = 8443;
 const passport = require("passport");
+const fs = require('fs');
 
-// const fs = require('fs');
-
-// // SSL STUFF
-// // const file = fs.readFileSync('./E51B39781622D62F940D155DF9A345D4.txt');
+// SSL STUFF
+const ssl_activation_file = fs.readFileSync('./SSLFiles/59D849BDD04E1038E8E83E8DB34231EE.txt');
 // const key = fs.readFileSync('private.key');
 // const cert = fs.readFileSync('certificate.crt');
 // const cred = {key, cert}
@@ -137,6 +136,10 @@ app.use("/", facebookRouter);
 app.get("/", (req, res) => {
 	res.json({ message: `Server is running on port: ${port} || Deployed by CI/CD`});
 });
+
+app.get("/.well-known/pki-validation/59D849BDD04E1038E8E83E8DB34231EE.txt", (req, res) => {
+    res.sendFile('actions-runner/_work/GOGO_MERN/GOGO_MERN/setup/server/59D849BDD04E1038E8E83E8DB34231EE.txt');
+})
 
 /* Listen on port 5000 */
 httpServer.listen(port, () => {
