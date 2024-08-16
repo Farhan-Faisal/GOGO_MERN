@@ -10,9 +10,9 @@ const fs = require('fs');
 
 // SSL STUFF
 const ssl_activation_file = fs.readFileSync('./SSLFiles/59D849BDD04E1038E8E83E8DB34231EE.txt');
-// const key = fs.readFileSync('private.key');
-// const cert = fs.readFileSync('certificate.crt');
-// const cred = {key, cert}
+const key = fs.readFileSync('./SSLFiles/private.key');
+const cert = fs.readFileSync('./SSLFiles/certificate.crt');
+const cred = {key, cert}
 
 
 require("dotenv").config();
@@ -38,7 +38,7 @@ app.use(passport.session());
   - Need an HTTP server as socket server can only be connected to this
 */
 const http = require('http'); 
-const httpServer = http.createServer(app);
+const httpServer = http.createServer(cred, app);
 
 /*
   - Import socket server
@@ -134,7 +134,7 @@ app.use("/", facebookRouter);
     - Server deployment indication
 */
 app.get("/", (req, res) => {
-	res.json({ message: `Server is running on port: ${port} || Deployed by CI/CD`});
+	res.json({ message: `Server is running on securePort: ${securePort} || Deployed by CI/CD`});
 });
 
 app.get("/.well-known/pki-validation/59D849BDD04E1038E8E83E8DB34231EE.txt", (req, res) => {
@@ -142,6 +142,6 @@ app.get("/.well-known/pki-validation/59D849BDD04E1038E8E83E8DB34231EE.txt", (req
 })
 
 /* Listen on port 5000 */
-httpServer.listen(port, () => {
-  console.log(`Server is running on port: ${port} || Deployed by CI/CD`);
+httpServer.listen(securePort, () => {
+  console.log(`Server is running on port: ${securePort} || Deployed by CI/CD`);
 });
