@@ -19,7 +19,7 @@ jobs:
         run: cd /home/ec2-user/actions-runner/_work/GOGO_MERN/GOGO_MERN/setup/server && npm i
         
       - name: start gogo server
-        run: cd /home/ec2-user/actions-runner/_work/GOGO_MERN/GOGO_MERN/setup/server && pm2 restart server.js
+        run: cd /home/ec2-user/actions-runner/_work/GOGO_MERN/GOGO_MERN/setup/server && pm2 restart server --update-env
 
       - name: Restart NGINX
         run: sudo service nginx restart
