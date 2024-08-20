@@ -10,9 +10,9 @@ const fs = require('fs');
 
 // SSL STUFF
 const ssl_activation_file = fs.readFileSync('./SSLFiles/96009CC69D5977F61D22A19691E98197.txt');
-// const key = fs.readFileSync('./SSLFiles/private.key');
-// const cert = fs.readFileSync('./SSLFiles/certificate.crt');
-// const cred = {key, cert}
+const key = fs.readFileSync('./SSLFiles/private.key');
+const cert = fs.readFileSync('./SSLFiles/certificate.crt');
+const cred = {key, cert}
 
 
 require("dotenv").config();
@@ -134,7 +134,7 @@ app.use("/", facebookRouter);
     - Server deployment indication
 */
 app.get("/", (req, res) => {
-	res.json({ message: `Server is running on securePort: ${securePort} || Deployed by CI/CD`});
+	res.json({ message: `Server is running on securePort: ${securePort} || Deployed by CI/CD xo`});
 });
 
 app.get("/.well-known/pki-validation/96009CC69D5977F61D22A19691E98197.txt", (req, res) => {
@@ -142,6 +142,6 @@ app.get("/.well-known/pki-validation/96009CC69D5977F61D22A19691E98197.txt", (req
 })
 
 /* Listen on port 5000 */
-httpServer.listen(port, () => {
+httpServer.listen(securePort, () => {
   console.log(`Server is running on port: ${port} || Deployed by CI/CD`);
 });
