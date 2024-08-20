@@ -33,7 +33,7 @@ function App() {
         <Sidebar isBusiness={false} />
         <Routes>
           
-          <Route path="/"
+          <Route exact path="/"
             element={
               <Login loggedInCallBack={"/requests"} SignUpRedirect={"/signup"} />
             }
