@@ -32,7 +32,7 @@ const GoogleAuthButton = () => {
         if (res.data.user === null) setOpenAccountSetup(true);
         else {
           localStorage.setItem("token", res.data.user.token);
-          navigate("/dashboard");
+          navigate("/requests");
         }
       })
       .catch(err => console.log(err));
@@ -61,7 +61,7 @@ const GoogleAuthButton = () => {
     <AccountSetup
       email={email}
       username={username}
-      accountSetupCallback={"/dashboard"}
+      accountSetupCallback={"/requests"}
       url={configData.SERVER_URL + "/login/facebook/first-time"}
       successfunc={res => {
         localStorage.setItem("token", res.data.token);
