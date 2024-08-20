@@ -44,7 +44,7 @@ const GoogleAuthButton = () => {
     /* global google */
     google.accounts.id.initialize({
       client_id:
-        "220227767873-c6v84t58eakjlps6crdbn8mq5ugdhe3r.apps.googleusercontent.com",
+        "510630290433-jlt1q0ippvmfqf7136astu46islidkgc.apps.googleusercontent.com",
       callback: handleCallbackResponse,
     });
 
