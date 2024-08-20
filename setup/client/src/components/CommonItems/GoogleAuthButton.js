@@ -70,12 +70,12 @@ const GoogleAuthButton = () => {
   ) : (
 
     <div className={styles.googleButton}
-      // style={{
-      //   flex: 1,
-      //   display: "flex",
-      //   justifyContent: "center",
-      //   alignItems: "center",
-      // }}
+      style={{
+        flex: 1,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
       id="GoogleSignUp"
     />
    
