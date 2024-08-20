@@ -38,7 +38,7 @@ const FBAccountSetup = () => {
       gender: gender,
     }).then((res) => {
       console.log(res);
-      navigate('/dashboard?facebookEmail=' + Email, {}); // DEV-CGP-6
+      navigate('/requests?facebookEmail=' + Email, {}); // DEV-CGP-6
     });
 
     await Axios.post(configData.SERVER_URL + "/api/userInterests/", {
