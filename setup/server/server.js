@@ -19,10 +19,11 @@ require("dotenv").config();
 
 /* Boiler plate code to for cross origin applications */
 app.use(cors({
-  origin: ["http://localhost:3000", "http://localhost:4000"], // Add multiple origins directly
+  origin: ["http://localhost:3000", "https://gogo-chat.vercel.app"], // Add multiple origins directly
   allowedHeaders: ["my-custom-header"],
   credentials: true
 }));
+
 app.use(express.json());
 app.use(
   session({
