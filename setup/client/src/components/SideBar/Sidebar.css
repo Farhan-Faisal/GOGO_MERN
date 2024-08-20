@@ -2,19 +2,19 @@
 .sidebar {
     font-weight: bold !important;
     width: 250px !important;
-    position: fixed !important; /* Changed from absolute to fixed */
+    position: fixed !important;
     top: 0 !important;
-    left: 0 !important; /* Align it to the left */
+    left: 0 !important;
     height: 100% !important;
-    background-color: #333 !important; /* Sidebar background color */
+    background-color: #333 !important;
     z-index: 1000 !important;
     transition: transform 0.3s ease !important;
-    transform: translateX(-100%) !important; /* Hide sidebar initially */
+    transform: translateX(-250px) !important; /* Hide sidebar initially */
 }
 
 /* Open the sidebar when toggled */
 .sidebar.open {
-    transform: translateX(0) !important;
+    transform: translateX(0) !important; /* Slide the sidebar into view */
 }
 
 /* Logo styles */
@@ -59,7 +59,7 @@
 /* Hide sidebar and show hamburger menu on smaller screens */
 @media (max-width: 768px) {
     .sidebar {
-        transform: translateX(-100%) !important;
+        transform: translateX(-250px) !important; /* Ensure it's hidden */
     }
 
     .hamburger {
@@ -70,7 +70,7 @@
 /* Always show sidebar on larger screens */
 @media (min-width: 769px) {
     .sidebar {
-        transform: translateX(0) !important;
+        transform: translateX(0) !important; /* Always show on large screens */
     }
 
     .hamburger {
