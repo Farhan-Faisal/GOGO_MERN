@@ -249,7 +249,7 @@ a:hover {
     color: blue
 }
 
-/* .googleButton { /* DEV-CGP-6 placeholder*/
+.googleButton { 
     padding: 9.5px;
     flex: 1;
     margin: 10px 0;
