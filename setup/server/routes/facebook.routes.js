@@ -16,7 +16,6 @@ passport.deserializeUser(function(user, done) { done(null, user); });
 
 /* Setup Facebook Strategy */
 const FacebookStrategy = require("passport-facebook").Strategy;
-https://gogo-chat.vercel.app
 passport.authorize('facebook', { scope : ['email'] })
 passport.use(
   new FacebookStrategy ({
