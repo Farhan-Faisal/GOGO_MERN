@@ -223,14 +223,20 @@ body {
     transition-duration: 0.4s;
 }
 
-.googleButton { /* DEV-CGP-6 */
+a:visited {
+    color: white;
+}
+
+a:hover {
+    color: blue
+}
+
+.googleButton { 
     padding: 9.5px;
     flex: 1;
-/*     margin: 10px 0;
-    margin: 1px; */
-    margin: "auto";
-    width: "min-content";
-    background-color: "#00A36C";
+    margin: 10px 0;
+    margin: 1px;
+    background-color: #1aa260;
     color: #ffffff;
     border-radius: 5px;
     border-width: 0;
@@ -239,14 +245,6 @@ body {
     font-weight: 700;
     text-align: center;
     transition-duration: 0.4s;
-}
-
-a:visited {
-    color: white;
-}
-
-a:hover {
-    color: blue
 }
 
 
