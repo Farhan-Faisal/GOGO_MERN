@@ -9,10 +9,10 @@ const passport = require("passport");
 const fs = require('fs');
 
 // SSL STUFF
-const ssl_activation_file = fs.readFileSync('./SSLFiles/59D849BDD04E1038E8E83E8DB34231EE.txt');
-const key = fs.readFileSync('./SSLFiles/private.key');
-const cert = fs.readFileSync('./SSLFiles/certificate.crt');
-const cred = {key, cert}
+const ssl_activation_file = fs.readFileSync('./SSLFiles/96009CC69D5977F61D22A19691E98197.txt');
+// const key = fs.readFileSync('./SSLFiles/private.key');
+// const cert = fs.readFileSync('./SSLFiles/certificate.crt');
+// const cred = {key, cert}
 
 
 require("dotenv").config();
@@ -38,7 +38,7 @@ app.use(passport.session());
   - Need an HTTP server as socket server can only be connected to this
 */
 const http = require('http'); 
-const httpServer = http.createServer(cred, app);
+const httpServer = http.createServer(app);
 
 /*
   - Import socket server
@@ -137,11 +137,11 @@ app.get("/", (req, res) => {
 	res.json({ message: `Server is running on securePort: ${securePort} || Deployed by CI/CD`});
 });
 
-app.get("/.well-known/pki-validation/59D849BDD04E1038E8E83E8DB34231EE.txt", (req, res) => {
-    res.sendFile('./SSLFiles/59D849BDD04E1038E8E83E8DB34231EE.txt', {root: __dirname});
+app.get("/.well-known/pki-validation/96009CC69D5977F61D22A19691E98197.txt", (req, res) => {
+    res.sendFile('./SSLFiles/96009CC69D5977F61D22A19691E98197.txt', {root: __dirname});
 })
 
 /* Listen on port 5000 */
-httpServer.listen(securePort, () => {
-  console.log(`Server is running on port: ${securePort} || Deployed by CI/CD`);
+httpServer.listen(port, () => {
+  console.log(`Server is running on port: ${port} || Deployed by CI/CD`);
 });
