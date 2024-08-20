@@ -32,7 +32,7 @@ const GoogleAuthButton = () => {
         if (res.data.user === null) setOpenAccountSetup(true);
         else {
           localStorage.setItem("token", res.data.user.token);
-          navigate("/dashboard");
+          navigate("/requests");
         }
       })
       .catch(err => console.log(err));
@@ -44,7 +44,7 @@ const GoogleAuthButton = () => {
     /* global google */
     google.accounts.id.initialize({
       client_id:
-        "220227767873-c6v84t58eakjlps6crdbn8mq5ugdhe3r.apps.googleusercontent.com",
+        "510630290433-jlt1q0ippvmfqf7136astu46islidkgc.apps.googleusercontent.com",
       callback: handleCallbackResponse,
     });
 
@@ -61,7 +61,7 @@ const GoogleAuthButton = () => {
     <AccountSetup
       email={email}
       username={username}
-      accountSetupCallback={"/dashboard"}
+      accountSetupCallback={"/requests"}
       url={configData.SERVER_URL + "/login/facebook/first-time"}
       successfunc={res => {
         localStorage.setItem("token", res.data.token);
