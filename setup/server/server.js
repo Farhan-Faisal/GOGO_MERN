@@ -18,7 +18,11 @@ const cred = {key, cert}
 require("dotenv").config();
 
 /* Boiler plate code to for cross origin applications */
-app.use(cors());
+app.use(cors({
+  origin: ["http://localhost:3000", "http://localhost:4000"], // Add multiple origins directly
+  allowedHeaders: ["my-custom-header"],
+  credentials: true
+}));
 app.use(express.json());
 app.use(
   session({
@@ -47,7 +51,7 @@ const httpServer = http.createServer(app);
 const { Server } = require("socket.io"); 
 const io = new Server(httpServer, {
   cors: {
-    origin: "http://localhost:3000", // Client side
+    origin: ["http://localhost:3000", "https://gogo-chat.vercel.app"], // Client side
     allowedHeaders: ["my-custom-header"], credentials: true
   }
 }); 
