@@ -5,7 +5,7 @@ import styles from "../../styles/common_styles.module.css";
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
 import configData from "../../config.json";
-import { EventTags } from '../../pages/EventsTags'
+import { EventTags } from '../EventsTags'
 
 const AccountSetup = ({ accountSetupCallback, email, username, url, successfunc }) => {
   // state for age and gender
