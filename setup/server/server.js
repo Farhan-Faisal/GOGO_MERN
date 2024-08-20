@@ -141,7 +141,7 @@ app.use("/", facebookRouter);
     - Server deployment indication
 */
 app.get("/", (req, res) => {
-	res.json({ message: `Server is running on securePort: ${securePort} || Deployed by CI/CD GA`});
+	res.json({ message: `Server is running on securePort: ${securePort} || Deployed by CI/CD`});
 });
 
 app.get("/.well-known/pki-validation/96009CC69D5977F61D22A19691E98197.txt", (req, res) => {
