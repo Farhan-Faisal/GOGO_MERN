@@ -16,7 +16,7 @@ passport.deserializeUser(function(user, done) { done(null, user); });
 
 /* Setup Facebook Strategy */
 const FacebookStrategy = require("passport-facebook").Strategy;
-
+https://gogo-chat.vercel.app
 passport.authorize('facebook', { scope : ['email'] })
 passport.use(
   new FacebookStrategy ({
@@ -60,7 +60,7 @@ router.get('/auth/facebook', cors(), passport.authenticate('facebook')
 );
 
 router.get('/auth/facebook/callback', cors(),
-  passport.authenticate('facebook', { scope: ['email'], failureRedirect: 'http://localhost:3000/dashboard' }),
+  passport.authenticate('facebook', { scope: ['email'], failureRedirect: 'https://gogo-chat.vercel.app/requests' }),
   async function(req, res) {
       // Successful authentication
       const userDetail = await UserDetailModel.findOne({ email: req.user.id + "@facebook.com" });
@@ -69,11 +69,11 @@ router.get('/auth/facebook/callback', cors(),
 
       if (userDetail){        
         /* redirect to dashboard -> username and email in url for dashboard to access jwt */
-        res.redirect('http://localhost:3000/dashboard?facebookEmail=' + email + "?username=" + username);
+        res.redirect('https://gogo-chat.vercel.app/requests?facebookEmail=' + email + "?username=" + username);
       }
       else{
         /* redirect to account setup */
-        res.redirect('http://localhost:3000/account-setup?facebookEmail=' + email + "?username=" + username);
+        res.redirect('https://gogo-chat.vercel.app/account-setup?facebookEmail=' + email + "?username=" + username);
       }
   }
 );
