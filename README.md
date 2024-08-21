@@ -2,7 +2,7 @@
 GoGo is a website that connects individuals who want to have a secure medium of communication.
 It allows users to engage in texting realtime after getting connected.
 
-### [PROJECT PROTOTYPE] (!https://gogo-chat.vercel.app)
+### [PROJECT PROTOTYPE](https://gogo-chat.vercel.app)
 
 ### BUILT WITH
 * [MongoDB](https://www.mongodb.com/)
