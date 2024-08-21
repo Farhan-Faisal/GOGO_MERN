@@ -212,8 +212,8 @@ body {
     margin: 1px; */
     margin: "auto";
     width: "min-content";
-    background-color: #4267B2;
-    color: #ffffff;
+    background-color: #ffffff;
+    /* color: #ffffff; */
     border-radius: 5px;
     border-width: 0;
     font-size: 30px;
