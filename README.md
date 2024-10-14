@@ -22,7 +22,7 @@ We are open to contributors. To contribute to this project the following steps a
 5. Push to the origin branch. (`git push origin story-11`)
 6. Create a pull request.
 
-### FUTURE FEATURE DEMO
+### SAMPLE FEATURE DEMO
 https://github.com/Farhan-Faisal/GOGO_MERN/assets/77621905/6be8f11e-0026-4efd-9241-04540c6c3fb7
 
 
