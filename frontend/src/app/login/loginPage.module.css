@@ -1,0 +1,60 @@
+.loginPage {
+  display: flex;
+  padding: 3rem;
+  width: 100%;
+  height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.leftColumn {
+  flex: 1;
+  background-image: url('https://images.pexels.com/photos/1181352/pexels-photo-1181352.jpeg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.overlay {
+  background-color: rgba(150, 150, 150, 0.5);
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #AD03DE;
+}
+
+.description {
+  font-size: 1.25rem;
+  color: #AD03DE;
+}
+
+.rightColumn {
+  flex: 1;
+  background-color: #f9f9f9;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* position: relative; */
+}
+
+/* Vertical divider */
+.loginPage::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  height: 100%;
+  background-color: #ccc;
+  z-index: 1;
+}
