@@ -73,7 +73,7 @@ export default function LoginForm({
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          sx={{ input: { color: '#fff' } }}
+          sx={{ input: { color: '#fff' }, label: { color: '#fff' } }}
         />
 
         <TextField
@@ -90,7 +90,7 @@ export default function LoginForm({
               </IconButton>
             ),
           }}
-          sx={{ input: { color: '#fff' } }}
+          sx={{ input: { color: '#fff' }, label: { color: '#fff' } }}
         />
 
         <Button variant="contained" type="submit" fullWidth sx={styles.loginButton}>

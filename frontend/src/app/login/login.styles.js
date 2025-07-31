@@ -3,7 +3,7 @@ import { color } from "storybook/internal/theming";
 // app/login/login.styles.ts
 export const styles = {
   container: {
-    backgroundColor: '#1e1e1e',
+    backgroundColor: '#000000',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',

@@ -1,0 +1,110 @@
+.twoColumnContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.chatRoomContainer {
+    display: inline-block;
+
+    padding: 10px;
+
+    width: 70%;
+    height: 80%;
+}
+
+.chatRoomListContainer{
+    display: inline-block;
+
+    padding: 10px;
+
+    width: 30%;
+    height: 80%;
+}
+
+.messageRow{
+    min-height: 50px;
+    height: fit-content;
+    width: inherit;
+}
+
+.message{
+    width: fit-content;
+    border-radius: 15px;
+    text-align: center;
+
+    color: white; 
+    background-color: #AD03DE;
+
+    clear: both;
+    max-width: 50%;
+    overflow-wrap: break-word;
+
+    padding: 6px; 
+    padding-left: 15px;
+    padding-right: 15px;
+    
+    margin: 2px;
+    margin-right: 5px;
+}
+
+
+
+.transparentRoomListItem{
+    color: white; 
+    background-color: #1e1e1e;
+
+    border-width: 5px !important;
+    border-style: dashed;
+    border-color: #AD03DE !important;
+
+    transition-duration: 0.3s;
+
+    width: 100%;
+
+    text-align: center;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    border-radius: 15px;
+
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+
+    margin: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: auto;
+
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+
+.purpleRoomListItem {
+    color: white; 
+    background-color: #AD03DE;
+    transition-duration: 0.3s;
+    cursor: pointer;
+
+    width: 100%;
+
+    text-align: center;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    border-radius: 15px;
+
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+
+    margin: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: auto;
+
+    white-space: nowrap;
+}
