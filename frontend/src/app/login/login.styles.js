@@ -4,7 +4,6 @@ import { color } from "storybook/internal/theming";
 export const styles = {
   container: {
     backgroundColor: '#1e1e1e',
-    minHeight: '100vh',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',

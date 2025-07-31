@@ -38,8 +38,7 @@
 
 .rightColumn {
   flex: 1;
-  background-color: #f9f9f9;
-  height: 100vh;
+  background-color: #000000;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -54,7 +53,6 @@
   top: 0;
   bottom: 0;
   width: 1px;
-  height: 100%;
   background-color: #ccc;
   z-index: 1;
 }
