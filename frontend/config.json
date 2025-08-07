@@ -1,4 +1,5 @@
 {
-    "SERVER_URL":  "https://3.14.72.182"
+    "D_SERVER_URL":  "https://3.14.72.182",
+    "SERVER_URL": "http://localhost:9000"
 }
 
