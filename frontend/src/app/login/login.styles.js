@@ -1,77 +1,90 @@
-import { color } from "storybook/internal/theming";
-
 // app/login/login.styles.ts
 export const styles = {
   container: {
-    backgroundColor: '#000000',
+    bgcolor: '#000',
+    minHeight: '90%',
     display: 'flex',
-    justifyContent: 'center',
     alignItems: 'center',
-    padding: '2rem',
+    justifyContent: 'center',
+    px: { xs: 2, sm: 3, md: 4 }, // responsive padding
   },
+
   form: {
     display: 'flex',
     flexDirection: 'column',
-    gap: 2,
+    gap: { xs: 1, sm: 1.5 },
+    minHeight: '85%',
     width: '100%',
-    maxWidth: 400,
+    maxWidth: { xs: '100%', sm: 420, md: 480 },
     bgcolor: '#2e2e2e',
-    p: 4,
+    p: { xs: 1, sm: 2, md: 3 },
     borderRadius: 2,
+    boxSizing: 'border-box',
+
+    // allow scrolling when height is tight
+    maxHeight: 'min(95%, 600px)',
+    overflowY: 'auto',
   },
+
   title: {
     color: '#AD03DE',
     fontWeight: 'bold',
     textAlign: 'center',
+    fontSize: 'clamp(1.25rem, 2.5vw, 1.75rem)',
   },
+
   textField: {
     input: { color: '#fff' },
+    width: '100%',
   },
+
   loginButton: {
+    mt: 1,
+    width: '100%',
+    minHeight: 44,
     backgroundColor: '#AD03DE',
     fontWeight: 'bold',
-    '&:hover': {
-      backgroundColor: '#df6cff',
-    },
+    '&:hover': { backgroundColor: '#df6cff' },
   },
+
   dividerContainer: {
     display: 'flex',
     alignItems: 'center',
-    gap: '0.25rem',
+    gap: '0.5rem',
   },
-  divider: {
-    flexGrow: 1,
-    backgroundColor: '#fff',
-  },
-  orText: {
-    color: '#fff',
-  },
+  divider: { flexGrow: 1, bgcolor: '#fff' },
+  orText: { color: '#fff', fontSize: '0.9rem' },
+
   socialButtons: {
     display: 'flex',
     justifyContent: 'center',
-    gap: 16,
+    flexWrap: 'wrap',             // <-- wrap on small screens
+    gap: { xs: 1, sm: 2 },
+    '> *': {
+      flex: { xs: '1 1 45%', sm: '0 0 auto' }, // two-per-row on mobile, inline on larger
+      minWidth: { xs: 'auto', sm: 140 },
+    },
   },
+
   facebookButton: {
-    backgroundColor: '#1877F2',
+    bgcolor: '#1877F2',
     borderColor: '#fff',
-    '&:hover': {
-      borderColor: '#df6cff',
-    },
+    borderRadius: 7,
     color: '#fff',
+    '&:hover': { borderColor: '#df6cff' },
   },
+
   googleButton: {
-    backgroundColor: '#34A853;',
+    bgcolor: '#34A853', // removed stray semicolon
     borderColor: '#fff',
-    '&:hover': {
-      borderColor: '#df6cff',
-    },
     color: '#fff',
+    '&:hover': { borderColor: '#df6cff' },
   },
+
   signUpPrompt: {
     textAlign: 'center',
     color: '#fff',
+    fontSize: 'clamp(0.9rem, 1.5vw, 1rem)',
   },
-  signUpButton: {
-    color: '#df6cff',
-  },
+  signUpButton: { color: '#df6cff' },
 };

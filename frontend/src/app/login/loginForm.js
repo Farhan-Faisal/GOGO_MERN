@@ -60,7 +60,7 @@ export default function LoginForm({
   return (
     <Box sx={styles.container}>
       <Box component="form" onSubmit={handleSubmit} sx={styles.form}>
-        <Typography variant="h4" fontWeight="bold" color="#AD03DE" textAlign="center">
+        <Typography variant="h5" fontWeight="bold" color="#AD03DE" textAlign="center">
           LOGIN
         </Typography>
 
@@ -103,7 +103,7 @@ export default function LoginForm({
           </Typography>
         </Divider>
 
-        <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2 }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 2 }}>
           <Button
             variant="outlined"
             startIcon={<GoogleIcon />}
