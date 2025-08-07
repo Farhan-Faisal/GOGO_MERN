@@ -1,33 +1,30 @@
 'use client'; // Required for App Router (Next.js 13+)
 
 import { useState } from 'react';
-import Signup from './Signup';
+import SignupForm from './SignupForm';
 import AccountSetup from './AccountSetup';
-import configData from '../../config.json';
+import AuthLayout from '../../layout/AuthLayout';
 
-export default function SignupHub({ accountSetupCallback, loginRedirect }) {
+export default function SignupHub({ accountSetupCallback }) {
   const [signedIn, setSignedIn] = useState(false);
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
 
   return (
-    <>
+    <AuthLayout>
       {!signedIn ? (
-        <Signup
-          signedUpCallback={(email, username) => {
-            setSignedIn(true);
-            setEmail(email);
-            setUsername(username);
-          }}
-          loginRedirect={loginRedirect}
-        />
-      ) : (
+          <SignupForm
+            loggedInCallBack="/dashboard"
+            businessLoggedInCallBack={() => {}}
+            SignUpRedirect="/signup"
+          />
+    ) : (
         <AccountSetup
           accountSetupCallback={accountSetupCallback}
           email={email}
           username={username}
         />
       )}
-    </>
+    </AuthLayout>
   );
 }

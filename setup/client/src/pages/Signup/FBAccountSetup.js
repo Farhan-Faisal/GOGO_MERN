@@ -6,6 +6,7 @@ import Axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { EventTags } from '../EventsTags'
 import configData from "../../config.json";
+
 const FBAccountSetup = () => {
   // state for age and gender
   const [age, setAge] = useState(18);
